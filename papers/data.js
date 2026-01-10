@@ -1,0 +1,51 @@
+// This file is automatically loaded by index.html to avoid CORS issues with local file fetching
+const papersData = {
+  "yourName": "Damsub Lim",
+  "papers": [
+    {
+      "id": "paper1",
+      "bibtex": "@article{limSiNASPerformanceCentricSRN2026,\n  title = {S-iNAS: A Performance-Centric SRN Modeling and Analysis of Time and Event Based Scaling Strategies in Ceph-Based Industrial Network-Attached Storage},\n  shorttitle = {S-{{iNAS}}},\n  author = {Lim, Damsub and Nguyen, Tuan Anh and Li, Jueying and Choi, Eunmi and Min, Dugki and Cadena, Ruben Machucho and Nogueira, Bruno and Andrade, Ermeson and Callou, Gustavo and Di Mauro, Mario and Torquato, Matheus and Silva, Francisco Airton and Maciel, Paulo},\n  year = 2026,\n  month = mar,\n  journal = {Journal of Network and Systems Management},\n  volume = {34},\n  number = {1},\n  pages = {34},\n  issn = {1064-7570, 1573-7705},\n  doi = {10.1007/s10922-025-10005-6},\n  urldate = {2025-12-05},\n  langid = {english}\n}",
+      "links": {
+        "pdf": "papers/251205-S-iNAS A Performance-Centric SRN Modeling and Analysis of Time and Event Based Scaling Strategies in Ceph-Based Industrial Network-Attached Storage.pdf",
+        "doi": "https://doi.org/10.1007/s10922-025-10005-6"
+      }
+    },
+    {
+      "id": "paper1-manual",
+      "title": "Deep Learning for Image Classification: A Comprehensive Survey",
+      "titleLink": "#",
+      "authors": [
+        {
+          "name": "Your Name",
+          "bold": true
+        },
+        {
+          "name": "Co-Author Name",
+          "bold": false
+        },
+        {
+          "name": "Another Author",
+          "bold": false
+        }
+      ],
+      "venue": "Conference/Journal Name",
+      "year": 2024,
+      "links": {
+        "pdf": "papers/paper1.pdf",
+        "arxiv": "https://arxiv.org/abs/xxxx.xxxxx",
+        "code": "https://github.com/yourusername/project1",
+        "demo": null,
+        "bibtex": null
+      },
+      "abstract": "Optional: Abstract text here"
+    },
+    {
+      "id": "paper2",
+      "bibtex": "@inproceedings{paper2_2023,\n  title={Multi-Modal Learning for Visual Question Answering},\n  author={Your Name and Collaborator Name},\n  booktitle={Workshop Name},\n  year={2023},\n  pdf={papers/paper2.pdf},\n  code={https://github.com/yourusername/project2}\n}"
+    },
+    {
+      "id": "paper3",
+      "bibtex": "@article{paper3_2023,\n  title={Efficient Object Detection in Real-Time Applications},\n  author={Your Name and Team Member},\n  journal={Journal Name},\n  year={2023},\n  pdf={papers/paper3.pdf},\n  code={https://github.com/yourusername/project3},\n  demo={https://demo-url.com}\n}"
+    }
+  ]
+};
