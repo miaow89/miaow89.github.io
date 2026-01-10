@@ -1,5 +1,5 @@
 // This file is automatically loaded by index.html to avoid CORS issues with local file fetching
-const papersData = {
+window.papersData = {
   "yourName": "Damsub Lim",
   "papers": [
     // International
