@@ -106,7 +106,7 @@
                 </div>
                 
                 <!-- TODO: 이름 수정 -->
-                <h1 class="text-2xl font-bold text-center mb-2" id="mobile-name">임담섭</h1>
+                <h1 class="text-2xl font-bold text-center mb-2" id="mobile-name">홍길동</h1>
                 
                 <!-- TODO: 직위/소속 수정 (예: "PhD Student at 서울대학교", "Software Engineer at Google") -->
                 <p class="text-center text-gray-600 mb-4" id="mobile-position">PhD Student at OO University</p>
@@ -287,121 +287,20 @@
                 
                 <!-- ==========================================
                      Publications 섹션 - 논문/프로젝트 목록
+                     papers/papers.json 파일에서 자동으로 로드됨
                      ========================================== -->
                 <section id="publications" class="mb-12">
                     <h2 class="text-3xl font-bold text-[#2b6cb0] mb-6">Publications</h2>
-                    <div class="space-y-6">
-                        <!-- ========== 논문/프로젝트 항목 1 ========== -->
-                        <!-- TODO: 아래 항목 1, 2, 3의 내용을 실제 논문/프로젝트 정보로 수정 -->
-                        <!-- 필요한 만큼 복사해서 추가하거나, 불필요한 항목은 삭제 -->
-                        <div class="border-l-4 border-[#2b6cb0] pl-4 py-2">
-                            <!-- TODO: 논문/프로젝트 제목 수정 (클릭 가능한 링크가 필요하면 href="#" 수정) -->
-                            <h3 class="text-xl font-semibold mb-2">
-                                <a href="#" class="link-hover text-gray-800 hover:text-[#2b6cb0]">
-                                    Deep Learning for Image Classification: A Comprehensive Survey
-                                </a>
-                            </h3>
-                            <!-- TODO: 저자 목록 수정 (본인 이름은 <strong> 태그로 강조) -->
-                            <p class="text-gray-600 mb-2">
-                                <strong>Your Name</strong>, Co-Author Name, Another Author
-                            </p>
-                            <!-- TODO: 학회/저널명과 연도 수정 -->
-                            <p class="text-gray-600 mb-3">
-                                <em>Conference/Journal Name (Year)</em>
-                            </p>
-                            <!-- TODO: 링크 수정/추가/삭제 (PDF, arXiv, Code, Demo 등) -->
-                            <div class="flex flex-wrap gap-3">
-                                <!-- PDF 링크 - TODO: assets/paper1.pdf를 실제 파일 경로로 변경 -->
-                                <a href="assets/paper1.pdf" target="_blank" class="text-sm text-[#2b6cb0] hover:text-[#2c5282] flex items-center">
-                                    <i class="fas fa-file-pdf mr-1"></i> PDF
-                                </a>
-                                <!-- arXiv 링크 - TODO: arXiv URL 수정 -->
-                                <a href="https://arxiv.org/abs/xxxx.xxxxx" target="_blank" class="text-sm text-[#2b6cb0] hover:text-[#2c5282] flex items-center">
-                                    <i class="fas fa-external-link-alt mr-1"></i> arXiv
-                                </a>
-                                <!-- Code 링크 - TODO: GitHub URL 수정 -->
-                                <a href="https://github.com/yourusername/project1" target="_blank" class="text-sm text-[#2b6cb0] hover:text-[#2c5282] flex items-center">
-                                    <i class="fab fa-github mr-1"></i> Code
-                                </a>
-                                <!-- Demo 링크 추가 예시 (필요시 아래 줄의 주석 해제)
-                                <a href="https://demo-url.com" target="_blank" class="text-sm text-[#2b6cb0] hover:text-[#2c5282] flex items-center">
-                                    <i class="fas fa-external-link-alt mr-1"></i> Demo
-                                </a>
-                                -->
-                            </div>
+                    <!-- 
+                        논문 목록은 papers/papers.json 파일을 읽어서 자동으로 렌더링됩니다.
+                        새 논문을 추가하려면 papers/papers.json 파일을 수정하세요.
+                    -->
+                    <div id="publications-list" class="space-y-6">
+                        <!-- 로딩 메시지 -->
+                        <div class="text-center text-gray-500 py-8">
+                            <i class="fas fa-spinner fa-spin mr-2"></i>
+                            논문 목록을 불러오는 중...
                         </div>
-                        
-                        <!-- ========== 논문/프로젝트 항목 2 ========== -->
-                        <!-- TODO: 항목 1과 동일하게 수정 -->
-                        <div class="border-l-4 border-[#2b6cb0] pl-4 py-2">
-                            <h3 class="text-xl font-semibold mb-2">
-                                <a href="#" class="link-hover text-gray-800 hover:text-[#2b6cb0]">
-                                    Multi-Modal Learning for Visual Question Answering
-                                </a>
-                            </h3>
-                            <p class="text-gray-600 mb-2">
-                                <strong>Your Name</strong>, Collaborator Name
-                            </p>
-                            <p class="text-gray-600 mb-3">
-                                <em>Workshop Name (Year)</em>
-                            </p>
-                            <div class="flex flex-wrap gap-3">
-                                <a href="assets/paper2.pdf" target="_blank" class="text-sm text-[#2b6cb0] hover:text-[#2c5282] flex items-center">
-                                    <i class="fas fa-file-pdf mr-1"></i> PDF
-                                </a>
-                                <a href="https://github.com/yourusername/project2" target="_blank" class="text-sm text-[#2b6cb0] hover:text-[#2c5282] flex items-center">
-                                    <i class="fab fa-github mr-1"></i> Code
-                                </a>
-                            </div>
-                        </div>
-                        
-                        <!-- ========== 논문/프로젝트 항목 3 ========== -->
-                        <!-- TODO: 항목 1과 동일하게 수정 -->
-                        <div class="border-l-4 border-[#2b6cb0] pl-4 py-2">
-                            <h3 class="text-xl font-semibold mb-2">
-                                <a href="#" class="link-hover text-gray-800 hover:text-[#2b6cb0]">
-                                    Efficient Object Detection in Real-Time Applications
-                                </a>
-                            </h3>
-                            <p class="text-gray-600 mb-2">
-                                <strong>Your Name</strong>, Team Member
-                            </p>
-                            <p class="text-gray-600 mb-3">
-                                <em>Journal Name (Year)</em>
-                            </p>
-                            <div class="flex flex-wrap gap-3">
-                                <a href="assets/paper3.pdf" target="_blank" class="text-sm text-[#2b6cb0] hover:text-[#2c5282] flex items-center">
-                                    <i class="fas fa-file-pdf mr-1"></i> PDF
-                                </a>
-                                <a href="https://github.com/yourusername/project3" target="_blank" class="text-sm text-[#2b6cb0] hover:text-[#2c5282] flex items-center">
-                                    <i class="fab fa-github mr-1"></i> Code
-                                </a>
-                            </div>
-                        </div>
-                        
-                        <!-- 새 논문/프로젝트 항목 추가: 아래 형식 복사해서 위에 추가
-                        <div class="border-l-4 border-[#2b6cb0] pl-4 py-2">
-                            <h3 class="text-xl font-semibold mb-2">
-                                <a href="#" class="link-hover text-gray-800 hover:text-[#2b6cb0]">
-                                    논문/프로젝트 제목
-                                </a>
-                            </h3>
-                            <p class="text-gray-600 mb-2">
-                                <strong>Your Name</strong>, Co-Author
-                            </p>
-                            <p class="text-gray-600 mb-3">
-                                <em>Conference/Journal Name (Year)</em>
-                            </p>
-                            <div class="flex flex-wrap gap-3">
-                                <a href="assets/paper.pdf" target="_blank" class="text-sm text-[#2b6cb0] hover:text-[#2c5282] flex items-center">
-                                    <i class="fas fa-file-pdf mr-1"></i> PDF
-                                </a>
-                                <a href="https://github.com/yourusername/project" target="_blank" class="text-sm text-[#2b6cb0] hover:text-[#2c5282] flex items-center">
-                                    <i class="fab fa-github mr-1"></i> Code
-                                </a>
-                            </div>
-                        </div>
-                        -->
                     </div>
                 </section>
                 
@@ -542,6 +441,127 @@
             }
         });
         
+        // ==========================================
+        // 논문 목록 자동 렌더링 기능
+        // papers/papers.json 파일을 읽어서 Publications 섹션에 자동으로 표시
+        // ==========================================
+        
+        /**
+         * 논문 목록을 JSON 파일에서 로드하여 화면에 렌더링
+         */
+        async function loadPublications() {
+            try {
+                const response = await fetch('papers/papers.json');
+                if (!response.ok) {
+                    throw new Error('papers.json 파일을 찾을 수 없습니다.');
+                }
+                const papers = await response.json();
+                renderPublications(papers);
+            } catch (error) {
+                console.error('논문 목록을 불러오는 중 오류가 발생했습니다:', error);
+                document.getElementById('publications-list').innerHTML = `
+                    <div class="text-center text-red-500 py-8">
+                        <i class="fas fa-exclamation-circle mr-2"></i>
+                        논문 목록을 불러올 수 없습니다. papers/papers.json 파일을 확인해주세요.
+                        <br><small class="text-gray-400 mt-2 block">${error.message}</small>
+                    </div>
+                `;
+            }
+        }
+        
+        /**
+         * 논문 목록을 HTML로 렌더링
+         * @param {Array} papers - 논문 정보 배열
+         */
+        function renderPublications(papers) {
+            const container = document.getElementById('publications-list');
+            
+            if (!papers || papers.length === 0) {
+                container.innerHTML = `
+                    <div class="text-center text-gray-500 py-8">
+                        <i class="fas fa-inbox mr-2"></i>
+                        등록된 논문이 없습니다. papers/papers.json 파일에 논문 정보를 추가해주세요.
+                    </div>
+                `;
+                return;
+            }
+            
+            // 연도순으로 정렬 (최신순)
+            const sortedPapers = [...papers].sort((a, b) => (b.year || 0) - (a.year || 0));
+            
+            container.innerHTML = sortedPapers.map(paper => {
+                // 저자 목록 생성
+                const authorsHtml = paper.authors
+                    .map(author => author.bold ? `<strong>${author.name}</strong>` : author.name)
+                    .join(', ');
+                
+                // 제목 링크 처리
+                const titleHtml = paper.titleLink && paper.titleLink !== '#'
+                    ? `<a href="${paper.titleLink}" class="link-hover text-gray-800 hover:text-[#2b6cb0]" target="_blank">${paper.title}</a>`
+                    : `<span class="text-gray-800">${paper.title}</span>`;
+                
+                // 링크 버튼 생성
+                const linksHtml = [];
+                if (paper.links.pdf) {
+                    linksHtml.push(`
+                        <a href="${paper.links.pdf}" target="_blank" class="text-sm text-[#2b6cb0] hover:text-[#2c5282] flex items-center">
+                            <i class="fas fa-file-pdf mr-1"></i> PDF
+                        </a>
+                    `);
+                }
+                if (paper.links.arxiv) {
+                    linksHtml.push(`
+                        <a href="${paper.links.arxiv}" target="_blank" class="text-sm text-[#2b6cb0] hover:text-[#2c5282] flex items-center">
+                            <i class="fas fa-external-link-alt mr-1"></i> arXiv
+                        </a>
+                    `);
+                }
+                if (paper.links.code) {
+                    linksHtml.push(`
+                        <a href="${paper.links.code}" target="_blank" class="text-sm text-[#2b6cb0] hover:text-[#2c5282] flex items-center">
+                            <i class="fab fa-github mr-1"></i> Code
+                        </a>
+                    `);
+                }
+                if (paper.links.demo) {
+                    linksHtml.push(`
+                        <a href="${paper.links.demo}" target="_blank" class="text-sm text-[#2b6cb0] hover:text-[#2c5282] flex items-center">
+                            <i class="fas fa-external-link-alt mr-1"></i> Demo
+                        </a>
+                    `);
+                }
+                if (paper.links.bibtex) {
+                    linksHtml.push(`
+                        <a href="${paper.links.bibtex}" target="_blank" class="text-sm text-[#2b6cb0] hover:text-[#2c5282] flex items-center">
+                            <i class="fas fa-quote-right mr-1"></i> BibTeX
+                        </a>
+                    `);
+                }
+                
+                return `
+                    <div class="border-l-4 border-[#2b6cb0] pl-4 py-2">
+                        <h3 class="text-xl font-semibold mb-2">
+                            ${titleHtml}
+                        </h3>
+                        <p class="text-gray-600 mb-2">
+                            ${authorsHtml}
+                        </p>
+                        <p class="text-gray-600 mb-3">
+                            <em>${paper.venue}${paper.year ? ` (${paper.year})` : ''}</em>
+                        </p>
+                        ${linksHtml.length > 0 ? `
+                            <div class="flex flex-wrap gap-3">
+                                ${linksHtml.join('')}
+                            </div>
+                        ` : ''}
+                    </div>
+                `;
+            }).join('');
+        }
+        
+        // 페이지 로드 시 논문 목록 자동 로드
+        loadPublications();
+        
         // ========== 추가 JavaScript 기능 ==========
         // 필요시 여기에 추가 기능을 작성하세요
         // 예: 스무스 스크롤, 애니메이션, 다크 모드 등
@@ -552,4 +572,3 @@
     
 </body>
 </html>
-
