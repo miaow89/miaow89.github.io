@@ -9,11 +9,51 @@
         "bold": true
       },
       {
-        "name": "Co-Author Name",
+        "name": "Tuan Anh, Nguyen",
         "bold": false
       },
       {
-        "name": "Another Author",
+        "name": "Jueying, Li",
+        "bold": false
+      },
+      {
+        "name": "Eunmi, Choi",
+        "bold": false
+      },
+      {
+        "name": "Dugki, Min",
+        "bold": false
+      },
+      {
+        "name": "Ruben Machucho, Cadena",
+        "bold": false
+      },
+      {
+        "name": "Bruno, Nogueira",
+        "bold": false
+      },
+      {
+        "name": "Ermeson, Andrade",
+        "bold": false
+      },
+      {
+        "name": "Gustavo, Callou",
+        "bold": false
+      },
+      {
+        "name": "Mario, Di Mauro",
+        "bold": false
+      },
+      {
+        "name": "Matheus, Torquato",
+        "bold": false
+      },
+      {
+        "name": "Francisco Airton, Silva",
+        "bold": false
+      },
+      {
+        "name": "Paulo, Maciel",
         "bold": false
       }
     ],
@@ -79,6 +119,7 @@
     "abstract": null
   }
 ]
+
 
 
 
