@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- ==========================================
+         📝 수정 가이드
+         ==========================================
+         1. 프로필 정보: 라인 85-87, 129-137 (이름, 직위, 소개)
+         2. 프로필 사진: 라인 80, 125 (이미지 경로)
+         3. 소셜 링크: 라인 95-114, 142-160 (GitHub, LinkedIn 등)
+         4. About Me: 라인 181-189
+         5. News: 라인 200-215 (날짜와 내용 추가/삭제)
+         6. Publications: 라인 226-295 (논문 항목 추가/삭제)
+         7. Education: 라인 306-334 (학력 항목 추가/삭제)
+         8. Contact: 라인 344-357 (연락처 정보)
+         9. 저작권: 라인 166, 366 (이름과 연도)
+    ========================================== -->
+    
+    <!-- TODO: 페이지 제목 수정 -->
+    <title>Academic Portfolio</title>
+    
+    <!-- Tailwind CSS CDN - 수정 불필요 -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- FontAwesome CDN - 수정 불필요 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts - Roboto - 수정 불필요 (다른 폰트 원하면 변경 가능) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    
+    <!-- ==========================================
+         스타일 정의 (CSS)
+         ========================================== -->
+    <style>
+        /* 기본 폰트 설정 - 수정 불필요 */
+        * {
+            font-family: 'Roboto', sans-serif;
+        }
+        
+        /* ========== 포인트 컬러 설정 ========== */
+        /* TODO: 포인트 컬러 변경하려면 아래 색상 코드 수정 */
+        /* 현재: 다크 블루 (#2b6cb0) */
+        /* 예시: #1e40af (다크 블루), #059669 (그린), #dc2626 (레드) 등 */
+        :root {
+            --primary-color: #2b6cb0;  /* TODO: 메인 컬러 수정 */
+            --primary-hover: #2c5282;  /* TODO: 호버 시 컬러 수정 */
+        }
+        
+        /* 스무스 스크롤 - 수정 불필요 */
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        /* 사이드바 고정 (데스크탑) - 수정 불필요 */
+        @media (min-width: 768px) {
+            .sidebar-fixed {
+                position: fixed;
+                top: 0;
+                left: 0;
+                height: 100vh;
+                overflow-y: auto;
+            }
+        }
+        
+        /* 모바일 메뉴 토글 애니메이션 - 수정 불필요 */
+        .mobile-menu {
+            transition: max-height 0.3s ease-out;
+        }
+        
+        /* 링크 호버 효과 - 수정 불필요 (컬러는 위의 :root에서 변경) */
+        .link-hover {
+            transition: color 0.2s ease;
+        }
+        
+        .link-hover:hover {
+            color: var(--primary-color);
+        }
+        
+        /* 섹션 구분선 - 수정 불필요 (색상이나 여백 조정 가능) */
+        .section-divider {
+            border-top: 1px solid #e5e7eb;  /* TODO: 구분선 색상 변경 가능 */
+            margin: 3rem 0;                  /* TODO: 위아래 여백 조정 가능 */
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+    
+    <!-- 모바일 메뉴 토글 버튼 (모바일에서만 표시) -->
+    <div class="md:hidden bg-white shadow-md sticky top-0 z-50">
+        <button id="mobileMenuToggle" class="p-4 w-full text-left flex items-center justify-between">
+            <span class="font-semibold text-xl">Menu</span>
+            <i class="fas fa-bars text-gray-600"></i>
+        </button>
+        <div id="mobileMenu" class="hidden mobile-menu bg-white border-t border-gray-200">
+            <!-- 모바일 사이드바 내용 -->
+            <div class="p-6">
+                <!-- ========== 모바일 프로필 정보 (데스크탑 사이드바와 동일하게 수정) ========== -->
+                
+                <!-- TODO: 프로필 사진 경로 변경 (assets/profile.jpg 또는 온라인 이미지 URL) -->
+                <div class="flex justify-center mb-4">
+                    <img src="https://via.placeholder.com/150" alt="Profile" class="w-32 h-32 rounded-full object-cover border-4 border-gray-200">
+                </div>
+                
+                <!-- TODO: 이름 수정 -->
+                <h1 class="text-2xl font-bold text-center mb-2" id="mobile-name">홍길동</h1>
+                
+                <!-- TODO: 직위/소속 수정 (예: "PhD Student at 서울대학교", "Software Engineer at Google") -->
+                <p class="text-center text-gray-600 mb-4" id="mobile-position">PhD Student at OO University</p>
+                
+                <!-- TODO: 간단한 소개 한 문장 수정 -->
+                <p class="text-center text-sm text-gray-600 mb-6" id="mobile-bio">Research interests in Machine Learning and Computer Vision</p>
+                
+                <!-- TODO: 소셜 링크 URL 수정 (필요 없는 링크는 전체 <a> 태그 삭제) -->
+                <div class="flex justify-center space-x-4 mb-6">
+                    <!-- GitHub - TODO: yourusername을 실제 GitHub 사용자명으로 변경 -->
+                    <a href="https://github.com/yourusername" target="_blank" class="text-gray-600 hover:text-[#2b6cb0] transition-colors" title="GitHub">
+                        <i class="fab fa-github text-2xl"></i>
+                    </a>
+                    <!-- LinkedIn - TODO: yourusername을 실제 LinkedIn 사용자명으로 변경 -->
+                    <a href="https://linkedin.com/in/yourusername" target="_blank" class="text-gray-600 hover:text-[#2b6cb0] transition-colors" title="LinkedIn">
+                        <i class="fab fa-linkedin text-2xl"></i>
+                    </a>
+                    <!-- Google Scholar - TODO: YOUR_ID를 실제 Google Scholar ID로 변경 -->
+                    <a href="https://scholar.google.com/citations?user=YOUR_ID" target="_blank" class="text-gray-600 hover:text-[#2b6cb0] transition-colors" title="Google Scholar">
+                        <i class="fas fa-graduation-cap text-2xl"></i>
+                    </a>
+                    <!-- Email - TODO: 이메일 주소 변경 -->
+                    <a href="mailto:your.email@example.com" class="text-gray-600 hover:text-[#2b6cb0] transition-colors" title="Email">
+                        <i class="fas fa-envelope text-2xl"></i>
+                    </a>
+                    <!-- CV Download - TODO: assets/cv.pdf 경로에 실제 CV 파일 업로드 또는 링크 변경 -->
+                    <a href="assets/cv.pdf" target="_blank" class="text-gray-600 hover:text-[#2b6cb0] transition-colors" title="Download CV">
+                        <i class="fas fa-file-pdf text-2xl"></i>
+                    </a>
+                    <!-- 추가 소셜 링크가 필요하면 여기에 복사해서 추가 (예: Twitter, Instagram 등) -->
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="flex flex-col md:flex-row">
+        <!-- ==========================================
+             좌측 사이드바 (데스크탑 전용)
+             모바일에서는 상단 헤더로 표시됨
+             ========================================== -->
+        <aside class="w-full md:w-80 bg-white shadow-lg sidebar-fixed hidden md:block">
+            <div class="p-8">
+                <!-- ========== 프로필 사진 ========== -->
+                <!-- TODO: 프로필 사진 경로 변경 (assets/profile.jpg 또는 온라인 이미지 URL) -->
+                <div class="flex justify-center mb-6">
+                    <img src="https://via.placeholder.com/200" alt="Profile" class="w-48 h-48 rounded-full object-cover border-4 border-gray-200 shadow-md">
+                </div>
+                
+                <!-- ========== 이름 ========== -->
+                <!-- TODO: 이름 수정 (모바일 사이드바 라인 84와 동일하게) -->
+                <h1 class="text-3xl font-bold text-center mb-3" id="sidebar-name">홍길동</h1>
+                
+                <!-- ========== 직위/소속 ========== -->
+                <!-- TODO: 직위/소속 수정 (모바일 사이드바 라인 87와 동일하게) -->
+                <p class="text-center text-gray-600 mb-4" id="sidebar-position">PhD Student at OO University</p>
+                
+                <!-- ========== 간단한 소개 ========== -->
+                <!-- TODO: 소개 수정 (모바일 사이드바 라인 90과 동일하게) -->
+                <p class="text-center text-sm text-gray-600 mb-8 leading-relaxed" id="sidebar-bio">
+                    Research interests in Machine Learning and Computer Vision
+                </p>
+                
+                <!-- ========== 소셜 링크 아이콘 ========== -->
+                <!-- TODO: 각 링크의 URL 수정 (모바일 사이드바 라인 95-114와 동일하게) -->
+                <!-- 필요한 링크만 남기고 나머지는 삭제 가능 -->
+                <div class="flex justify-center space-x-4 mb-8">
+                    <!-- GitHub -->
+                    <a href="https://github.com/yourusername" target="_blank" class="text-gray-600 hover:text-[#2b6cb0] transition-colors" title="GitHub">
+                        <i class="fab fa-github text-2xl"></i>
+                    </a>
+                    <!-- LinkedIn -->
+                    <a href="https://linkedin.com/in/yourusername" target="_blank" class="text-gray-600 hover:text-[#2b6cb0] transition-colors" title="LinkedIn">
+                        <i class="fab fa-linkedin text-2xl"></i>
+                    </a>
+                    <!-- Google Scholar -->
+                    <a href="https://scholar.google.com/citations?user=YOUR_ID" target="_blank" class="text-gray-600 hover:text-[#2b6cb0] transition-colors" title="Google Scholar">
+                        <i class="fas fa-graduation-cap text-2xl"></i>
+                    </a>
+                    <!-- Email -->
+                    <a href="mailto:your.email@example.com" class="text-gray-600 hover:text-[#2b6cb0] transition-colors" title="Email">
+                        <i class="fas fa-envelope text-2xl"></i>
+                    </a>
+                    <!-- CV Download -->
+                    <a href="assets/cv.pdf" target="_blank" class="text-gray-600 hover:text-[#2b6cb0] transition-colors" title="Download CV">
+                        <i class="fas fa-file-pdf text-2xl"></i>
+                    </a>
+                    <!-- 추가 소셜 링크: Twitter, Instagram, ResearchGate 등 필요한 경우 복사해서 추가 -->
+                </div>
+                
+                <!-- ========== 저작권 문구 ========== -->
+                <!-- TODO: 이름과 연도 수정 (모바일 Footer 라인 366과 동일하게) -->
+                <div class="mt-auto pt-8 border-t border-gray-200">
+                    <p class="text-xs text-center text-gray-500">
+                        © 2024 홍길동. All rights reserved.
+                    </p>
+                </div>
+            </div>
+        </aside>
+        
+        <!-- ==========================================
+             우측 메인 콘텐츠 영역
+             ========================================== -->
+        <main class="flex-1 md:ml-80 min-h-screen">
+            <div class="max-w-4xl mx-auto px-6 md:px-12 py-8 md:py-12">
+                
+                <!-- ==========================================
+                     About Me 섹션 - 자기소개
+                     ========================================== -->
+                <section id="about" class="mb-12">
+                    <h2 class="text-3xl font-bold text-[#2b6cb0] mb-6">About Me</h2>
+                    <div class="prose max-w-none text-gray-700 leading-relaxed">
+                        <!-- TODO: 아래 내용을 실제 자기소개로 수정 -->
+                        <!-- <p> 태그를 추가/삭제하여 문단 조절 가능 -->
+                        <p class="mb-4">
+                            안녕하세요! 저는 OO 대학교에서 박사 과정을 수료하고 있는 연구자입니다. 
+                            머신러닝과 컴퓨터 비전 분야에 관심이 있으며, 특히 딥러닝을 활용한 이미지 분류와 객체 탐지 연구를 진행하고 있습니다.
+                        </p>
+                        <p class="mb-4">
+                            최근에는 자연어 처리와 컴퓨터 비전의 융합 연구에도 관심을 가지고 있으며, 
+                            멀티모달 학습 방법론을 탐구하고 있습니다. 논문과 프로젝트 경험을 통해 
+                            실용적이고 혁신적인 AI 솔루션을 개발하는 것을 목표로 하고 있습니다.
+                        </p>
+                        <!-- 추가 문단이 필요하면 아래 형식으로 복사:
+                        <p class="mb-4">
+                            추가하고 싶은 내용을 여기에 작성하세요.
+                        </p>
+                        -->
+                    </div>
+                </section>
+                
+                <div class="section-divider"></div>
+                
+                <!-- ==========================================
+                     News 섹션 - 최신 소식
+                     날짜순으로 정렬 (최신순)
+                     ========================================== -->
+                <section id="news" class="mb-12">
+                    <h2 class="text-3xl font-bold text-[#2b6cb0] mb-6">News</h2>
+                    <ul class="space-y-4">
+                        <!-- TODO: 뉴스 항목 추가/삭제/수정 -->
+                        <!-- 새로운 뉴스는 위에 추가하고, 오래된 뉴스는 삭제하세요 -->
+                        <!-- 날짜 형식: YYYY.MM (예: 2024.03) -->
+                        
+                        <!-- 뉴스 항목 1 - TODO: 날짜와 내용 수정 -->
+                        <li class="flex items-start">
+                            <span class="text-gray-500 text-sm font-medium mr-4 min-w-[100px]">2024.03</span>
+                            <span class="text-gray-700 flex-1">새로운 논문이 OO 학회에 수락되었습니다!</span>
+                        </li>
+                        
+                        <!-- 뉴스 항목 2 - TODO: 날짜와 내용 수정 -->
+                        <li class="flex items-start">
+                            <span class="text-gray-500 text-sm font-medium mr-4 min-w-[100px]">2024.01</span>
+                            <span class="text-gray-700 flex-1">OO 프로젝트가 GitHub에 오픈소스로 공개되었습니다.</span>
+                        </li>
+                        
+                        <!-- 뉴스 항목 3 - TODO: 날짜와 내용 수정 -->
+                        <li class="flex items-start">
+                            <span class="text-gray-500 text-sm font-medium mr-4 min-w-[100px]">2023.12</span>
+                            <span class="text-gray-700 flex-1">OO 학회에서 포스터 발표를 진행했습니다.</span>
+                        </li>
+                        
+                        <!-- 뉴스 항목 4 - TODO: 날짜와 내용 수정 -->
+                        <li class="flex items-start">
+                            <span class="text-gray-500 text-sm font-medium mr-4 min-w-[100px]">2023.09</span>
+                            <span class="text-gray-700 flex-1">박사 과정을 시작했습니다.</span>
+                        </li>
+                        
+                        <!-- 새 뉴스 항목 추가: 아래 형식 복사해서 위에 추가
+                        <li class="flex items-start">
+                            <span class="text-gray-500 text-sm font-medium mr-4 min-w-[100px]">YYYY.MM</span>
+                            <span class="text-gray-700 flex-1">뉴스 내용을 여기에 작성하세요.</span>
+                        </li>
+                        -->
+                    </ul>
+                </section>
+                
+                <div class="section-divider"></div>
+                
+                <!-- ==========================================
+                     Publications 섹션 - 논문/프로젝트 목록
+                     ========================================== -->
+                <section id="publications" class="mb-12">
+                    <h2 class="text-3xl font-bold text-[#2b6cb0] mb-6">Publications</h2>
+                    <div class="space-y-6">
+                        <!-- ========== 논문/프로젝트 항목 1 ========== -->
+                        <!-- TODO: 아래 항목 1, 2, 3의 내용을 실제 논문/프로젝트 정보로 수정 -->
+                        <!-- 필요한 만큼 복사해서 추가하거나, 불필요한 항목은 삭제 -->
+                        <div class="border-l-4 border-[#2b6cb0] pl-4 py-2">
+                            <!-- TODO: 논문/프로젝트 제목 수정 (클릭 가능한 링크가 필요하면 href="#" 수정) -->
+                            <h3 class="text-xl font-semibold mb-2">
+                                <a href="#" class="link-hover text-gray-800 hover:text-[#2b6cb0]">
+                                    Deep Learning for Image Classification: A Comprehensive Survey
+                                </a>
+                            </h3>
+                            <!-- TODO: 저자 목록 수정 (본인 이름은 <strong> 태그로 강조) -->
+                            <p class="text-gray-600 mb-2">
+                                <strong>Your Name</strong>, Co-Author Name, Another Author
+                            </p>
+                            <!-- TODO: 학회/저널명과 연도 수정 -->
+                            <p class="text-gray-600 mb-3">
+                                <em>Conference/Journal Name (Year)</em>
+                            </p>
+                            <!-- TODO: 링크 수정/추가/삭제 (PDF, arXiv, Code, Demo 등) -->
+                            <div class="flex flex-wrap gap-3">
+                                <!-- PDF 링크 - TODO: assets/paper1.pdf를 실제 파일 경로로 변경 -->
+                                <a href="assets/paper1.pdf" target="_blank" class="text-sm text-[#2b6cb0] hover:text-[#2c5282] flex items-center">
+                                    <i class="fas fa-file-pdf mr-1"></i> PDF
+                                </a>
+                                <!-- arXiv 링크 - TODO: arXiv URL 수정 -->
+                                <a href="https://arxiv.org/abs/xxxx.xxxxx" target="_blank" class="text-sm text-[#2b6cb0] hover:text-[#2c5282] flex items-center">
+                                    <i class="fas fa-external-link-alt mr-1"></i> arXiv
+                                </a>
+                                <!-- Code 링크 - TODO: GitHub URL 수정 -->
+                                <a href="https://github.com/yourusername/project1" target="_blank" class="text-sm text-[#2b6cb0] hover:text-[#2c5282] flex items-center">
+                                    <i class="fab fa-github mr-1"></i> Code
+                                </a>
+                                <!-- Demo 링크 추가 예시 (필요시 아래 줄의 주석 해제)
+                                <a href="https://demo-url.com" target="_blank" class="text-sm text-[#2b6cb0] hover:text-[#2c5282] flex items-center">
+                                    <i class="fas fa-external-link-alt mr-1"></i> Demo
+                                </a>
+                                -->
+                            </div>
+                        </div>
+                        
+                        <!-- ========== 논문/프로젝트 항목 2 ========== -->
+                        <!-- TODO: 항목 1과 동일하게 수정 -->
+                        <div class="border-l-4 border-[#2b6cb0] pl-4 py-2">
+                            <h3 class="text-xl font-semibold mb-2">
+                                <a href="#" class="link-hover text-gray-800 hover:text-[#2b6cb0]">
+                                    Multi-Modal Learning for Visual Question Answering
+                                </a>
+                            </h3>
+                            <p class="text-gray-600 mb-2">
+                                <strong>Your Name</strong>, Collaborator Name
+                            </p>
+                            <p class="text-gray-600 mb-3">
+                                <em>Workshop Name (Year)</em>
+                            </p>
+                            <div class="flex flex-wrap gap-3">
+                                <a href="assets/paper2.pdf" target="_blank" class="text-sm text-[#2b6cb0] hover:text-[#2c5282] flex items-center">
+                                    <i class="fas fa-file-pdf mr-1"></i> PDF
+                                </a>
+                                <a href="https://github.com/yourusername/project2" target="_blank" class="text-sm text-[#2b6cb0] hover:text-[#2c5282] flex items-center">
+                                    <i class="fab fa-github mr-1"></i> Code
+                                </a>
+                            </div>
+                        </div>
+                        
+                        <!-- ========== 논문/프로젝트 항목 3 ========== -->
+                        <!-- TODO: 항목 1과 동일하게 수정 -->
+                        <div class="border-l-4 border-[#2b6cb0] pl-4 py-2">
+                            <h3 class="text-xl font-semibold mb-2">
+                                <a href="#" class="link-hover text-gray-800 hover:text-[#2b6cb0]">
+                                    Efficient Object Detection in Real-Time Applications
+                                </a>
+                            </h3>
+                            <p class="text-gray-600 mb-2">
+                                <strong>Your Name</strong>, Team Member
+                            </p>
+                            <p class="text-gray-600 mb-3">
+                                <em>Journal Name (Year)</em>
+                            </p>
+                            <div class="flex flex-wrap gap-3">
+                                <a href="assets/paper3.pdf" target="_blank" class="text-sm text-[#2b6cb0] hover:text-[#2c5282] flex items-center">
+                                    <i class="fas fa-file-pdf mr-1"></i> PDF
+                                </a>
+                                <a href="https://github.com/yourusername/project3" target="_blank" class="text-sm text-[#2b6cb0] hover:text-[#2c5282] flex items-center">
+                                    <i class="fab fa-github mr-1"></i> Code
+                                </a>
+                            </div>
+                        </div>
+                        
+                        <!-- 새 논문/프로젝트 항목 추가: 아래 형식 복사해서 위에 추가
+                        <div class="border-l-4 border-[#2b6cb0] pl-4 py-2">
+                            <h3 class="text-xl font-semibold mb-2">
+                                <a href="#" class="link-hover text-gray-800 hover:text-[#2b6cb0]">
+                                    논문/프로젝트 제목
+                                </a>
+                            </h3>
+                            <p class="text-gray-600 mb-2">
+                                <strong>Your Name</strong>, Co-Author
+                            </p>
+                            <p class="text-gray-600 mb-3">
+                                <em>Conference/Journal Name (Year)</em>
+                            </p>
+                            <div class="flex flex-wrap gap-3">
+                                <a href="assets/paper.pdf" target="_blank" class="text-sm text-[#2b6cb0] hover:text-[#2c5282] flex items-center">
+                                    <i class="fas fa-file-pdf mr-1"></i> PDF
+                                </a>
+                                <a href="https://github.com/yourusername/project" target="_blank" class="text-sm text-[#2b6cb0] hover:text-[#2c5282] flex items-center">
+                                    <i class="fab fa-github mr-1"></i> Code
+                                </a>
+                            </div>
+                        </div>
+                        -->
+                    </div>
+                </section>
+                
+                <div class="section-divider"></div>
+                
+                <!-- ==========================================
+                     Education 섹션 - 학력 사항
+                     ========================================== -->
+                <section id="education" class="mb-12">
+                    <h2 class="text-3xl font-bold text-[#2b6cb0] mb-6">Education</h2>
+                    <div class="space-y-6">
+                        <!-- ========== 학력 항목 1 ========== -->
+                        <!-- TODO: 아래 학력 항목 1, 2, 3의 내용을 실제 학력 정보로 수정 -->
+                        <!-- 필요한 만큼 복사해서 추가하거나, 불필요한 항목은 삭제 -->
+                        <div class="flex flex-col md:flex-row md:items-start">
+                            <!-- TODO: 기간 수정 (예: "2020 - 현재", "2018 - 2020") -->
+                            <div class="md:w-32 text-gray-500 text-sm font-medium mb-2 md:mb-0">2020 - 현재</div>
+                            <div class="flex-1">
+                                <!-- TODO: 학위명 수정 (예: "PhD in Computer Science", "BS in Mathematics") -->
+                                <h3 class="text-xl font-semibold mb-1">PhD in Computer Science</h3>
+                                <!-- TODO: 학교명 수정 -->
+                                <p class="text-gray-600 mb-1">OO University</p>
+                                <!-- TODO: 지도교수 수정 (박사 과정인 경우) -->
+                                <p class="text-sm text-gray-500">Advisor: Prof. Advisor Name</p>
+                                <!-- TODO: 논문 제목 수정 (박사 과정인 경우, 필요없으면 삭제) -->
+                                <p class="text-sm text-gray-500 mt-2">Thesis: "Deep Learning Approaches for Visual Recognition"</p>
+                            </div>
+                        </div>
+                        
+                        <!-- ========== 학력 항목 2 ========== -->
+                        <!-- TODO: 항목 1과 동일하게 수정 -->
+                        <div class="flex flex-col md:flex-row md:items-start">
+                            <div class="md:w-32 text-gray-500 text-sm font-medium mb-2 md:mb-0">2018 - 2020</div>
+                            <div class="flex-1">
+                                <h3 class="text-xl font-semibold mb-1">MS in Computer Science</h3>
+                                <p class="text-gray-600 mb-1">OO University</p>
+                                <!-- TODO: GPA 수정 (필요없으면 삭제) -->
+                                <p class="text-sm text-gray-500">GPA: 4.0/4.0</p>
+                            </div>
+                        </div>
+                        
+                        <!-- ========== 학력 항목 3 ========== -->
+                        <!-- TODO: 항목 1과 동일하게 수정 -->
+                        <div class="flex flex-col md:flex-row md:items-start">
+                            <div class="md:w-32 text-gray-500 text-sm font-medium mb-2 md:mb-0">2014 - 2018</div>
+                            <div class="flex-1">
+                                <h3 class="text-xl font-semibold mb-1">BS in Computer Science</h3>
+                                <p class="text-gray-600 mb-1">OO University</p>
+                                <!-- TODO: 수상 내역 등 수정 (필요없으면 삭제) -->
+                                <p class="text-sm text-gray-500">Summa Cum Laude</p>
+                            </div>
+                        </div>
+                        
+                        <!-- 새 학력 항목 추가: 아래 형식 복사해서 위에 추가
+                        <div class="flex flex-col md:flex-row md:items-start">
+                            <div class="md:w-32 text-gray-500 text-sm font-medium mb-2 md:mb-0">YYYY - YYYY</div>
+                            <div class="flex-1">
+                                <h3 class="text-xl font-semibold mb-1">학위명</h3>
+                                <p class="text-gray-600 mb-1">학교명</p>
+                                <p class="text-sm text-gray-500">추가 정보 (GPA, 수상 내역 등)</p>
+                            </div>
+                        </div>
+                        -->
+                    </div>
+                </section>
+                
+                <div class="section-divider"></div>
+                
+                <!-- ==========================================
+                     Contact 섹션 - 연락처 정보
+                     ========================================== -->
+                <section id="contact" class="mb-12">
+                    <h2 class="text-3xl font-bold text-[#2b6cb0] mb-6">Contact</h2>
+                    <div class="space-y-4 text-gray-700">
+                        <!-- TODO: 이메일 주소 수정 -->
+                        <p class="flex items-center">
+                            <i class="fas fa-envelope mr-3 text-[#2b6cb0] w-5"></i>
+                            <a href="mailto:your.email@example.com" class="link-hover">your.email@example.com</a>
+                        </p>
+                        
+                        <!-- TODO: 주소 정보 수정 (필요없으면 삭제) -->
+                        <p class="flex items-center">
+                            <i class="fas fa-map-marker-alt mr-3 text-[#2b6cb0] w-5"></i>
+                            <span>OO University, Department of Computer Science<br>
+                            Building Name, Room XXX<br>
+                            City, Country</span>
+                        </p>
+                        
+                        <!-- TODO: 전화번호 수정 (필요없으면 삭제) -->
+                        <p class="flex items-center">
+                            <i class="fas fa-phone mr-3 text-[#2b6cb0] w-5"></i>
+                            <span>+82-XX-XXXX-XXXX</span>
+                        </p>
+                        
+                        <!-- 추가 연락처 정보 (예: ResearchGate, ORCID 등)
+                        <p class="flex items-center">
+                            <i class="fas fa-link mr-3 text-[#2b6cb0] w-5"></i>
+                            <a href="https://..." target="_blank" class="link-hover">ResearchGate Profile</a>
+                        </p>
+                        -->
+                    </div>
+                </section>
+                
+            </div>
+            
+            <!-- ==========================================
+                 모바일 Footer (저작권 문구)
+                 ========================================== -->
+            <!-- TODO: 이름과 연도 수정 (데스크탑 사이드바 라인 166과 동일하게) -->
+            <footer class="md:hidden bg-white border-t border-gray-200 py-6 px-6">
+                <p class="text-xs text-center text-gray-500">
+                    © 2024 홍길동. All rights reserved.
+                </p>
+            </footer>
+        </main>
+    </div>
+    
+    <!-- ==========================================
+         JavaScript (모바일 메뉴 토글 기능)
+         ========================================== -->
+    <script>
+        // ========== 모바일 메뉴 토글 기능 ==========
+        // 모바일에서 메뉴 버튼을 클릭하면 사이드바가 나타나거나 사라지는 기능
+        // 수정 불필요 (기능만 추가하려면 아래에 코드 작성)
+        
+        document.getElementById('mobileMenuToggle').addEventListener('click', function() {
+            const menu = document.getElementById('mobileMenu');
+            const icon = this.querySelector('i');
+            
+            if (menu.classList.contains('hidden')) {
+                menu.classList.remove('hidden');
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            } else {
+                menu.classList.add('hidden');
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        });
+        
+        // ========== 추가 JavaScript 기능 ==========
+        // 필요시 여기에 추가 기능을 작성하세요
+        // 예: 스무스 스크롤, 애니메이션, 다크 모드 등
+        
+        // 모바일 사이드바와 데스크탑 사이드바 내용 동기화 (선택사항)
+        // 필요시 같은 데이터를 두 곳에 표시하도록 구현 가능
+    </script>
+    
+</body>
+</html>
