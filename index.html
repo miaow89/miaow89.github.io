@@ -927,162 +927,173 @@
         async function loadPublications() {
             try {
                 // Modified to use window.papersData loaded from papers/data.js
-                // This avoids CORS issues when running locally (file:// protocol)
-                if (typeof papersData === 'undefined') {
-                    throw new Error('papers/data.js 파일을 찾을 수 없거나 로드되지 않았습니다.');
-                }
+                async function loadPublications(retryCount = 0) {
+                    try {
+                        // Modified to use window.papersData loaded from papers/data.js
+                        // This prevents CORS issues and ensures data is accessible via window object
+                        if (typeof window.papersData === 'undefined') {
+                            if (retryCount < 5) {
+                                // Retry a few times if script hasn't loaded yet (race condition)
+                                console.log(`papersData not found, retrying... (${retryCount + 1}/5)`);
+                                setTimeout(() => loadPublications(retryCount + 1), 200);
+                                return;
+                            }
+                            throw new Error('papers/data.js 파일을 찾을 수 없거나 로드되지 않았습니다. (window.papersData is undefined)');
+                        }
 
-                // 본인 이름 추출 (설정 파일에서 가져오기, 없으면 기본값)
-                const yourName = papersData.yourName || null;
-                const papers = papersData.papers || papersData; // papers 필드가 있으면 사용, 없으면 배열 자체
+                        const papersData = window.papersData;
 
-                // BibTeX 파싱 및 정규화
-                const normalizedPapers = papers.map(paper => normalizePaper(paper, yourName));
+                        // 본인 이름 추출 (설정 파일에서 가져오기, 없으면 기본값)
+                        const yourName = papersData.yourName || null;
+                        const papers = papersData.papers || papersData; // papers 필드가 있으면 사용, 없으면 배열 자체
 
-                renderPublications(normalizedPapers);
-            } catch (error) {
-                console.error('논문 목록을 불러오는 중 오류가 발생했습니다:', error);
+                        // BibTeX 파싱 및 정규화
+                        const normalizedPapers = papers.map(paper => normalizePaper(paper, yourName));
 
-                const container = document.getElementById('publications-container');
-                if (container) {
-                    container.innerHTML = `
+                        renderPublications(normalizedPapers);
+                    } catch (error) {
+                        console.error('논문 목록을 불러오는 중 오류가 발생했습니다:', error);
+
+                        const container = document.getElementById('publications-container');
+                        if (container) {
+                            container.innerHTML = `
                         <div class="text-center text-red-500 py-8">
                             <i class="fas fa-exclamation-circle mr-2"></i>
                             Failed to load publications. Please check papers/data.js <br>
                             <small class="text-gray-400 text-xs">${error.message}</small>
                         </div>
                     `;
+                        }
+                    }
                 }
-            }
-        }
 
-        /**
-         * 논문 목록을 HTML로 렌더링
-         * @param {Array} papers - 논문 정보 배열
-         */
-        /**
-         * 논문 목록을 HTML로 렌더링
-         * @param {Array} papers - 논문 정보 배열
-         */
-        function renderPublications(papers) {
-            const internationalContainer = document.getElementById('publications-international-list');
-            const domesticContainer = document.getElementById('publications-domestic-list');
+                /**
+                 * 논문 목록을 HTML로 렌더링
+                 * @param {Array} papers - 논문 정보 배열
+                 */
+                /**
+                 * 논문 목록을 HTML로 렌더링
+                 * @param {Array} papers - 논문 정보 배열
+                 */
+                function renderPublications(papers) {
+                    const internationalContainer = document.getElementById('publications-international-list');
+                    const domesticContainer = document.getElementById('publications-domestic-list');
 
-            if (!papers || papers.length === 0) {
-                const emptyMsg = `
+                    if (!papers || papers.length === 0) {
+                        const emptyMsg = `
                     <div class="text-center text-gray-500 py-8">
                         <i class="fas fa-inbox mr-2"></i> No papers found.
                     </div>
                 `;
-                internationalContainer.innerHTML = emptyMsg;
-                domesticContainer.innerHTML = emptyMsg;
-                return;
-            }
-
-            // 연도순으로 정렬 (최신순)
-            const sortedPapers = [...papers].sort((a, b) => (b.year || 0) - (a.year || 0));
-
-            // 카테고리별 분류
-            const internationalPapers = sortedPapers.filter(p => p.category === 'international' || !p.category); // Default to international if missing
-            const domesticPapers = sortedPapers.filter(p => p.category === 'domestic');
-
-            // 렌더링 함수
-            const generateListHtml = (paperList) => {
-                if (paperList.length === 0) {
-                    return `<div class="text-gray-500 italic">No publications in this category.</div>`;
-                }
-                return paperList.map(paper => {
-                    // Title Prefix (SCI/KSCI)
-                    let titlePrefix = '';
-                    if (paper.isSCI) {
-                        const qRank = paper.quartile ? `, ${paper.quartile}` : '';
-                        titlePrefix = `<span class="text-red-600 font-bold mr-2">[SCI${qRank}]</span>`;
-                    } else if (paper.isKSCI) {
-                        titlePrefix = `<span class="text-blue-600 font-bold mr-2">[KSCI]</span>`;
+                        internationalContainer.innerHTML = emptyMsg;
+                        domesticContainer.innerHTML = emptyMsg;
+                        return;
                     }
 
-                    // 저자 목록 생성
-                    // 저자 목록 생성
-                    const formatName = (name) => `<u><strong>${name}</strong></u>`;
-                    let authorsHtml = '';
+                    // 연도순으로 정렬 (최신순)
+                    const sortedPapers = [...papers].sort((a, b) => (b.year || 0) - (a.year || 0));
 
-                    if (Array.isArray(paper.authors)) {
-                        authorsHtml = paper.authors
-                            .map(author => author.bold ? formatName(author.name) : author.name)
-                            .join(', ');
-                    } else if (typeof paper.authors === 'string') {
-                        authorsHtml = paper.authors
-                            .replace(/Damsub Lim/g, formatName('Damsub Lim'))
-                            .replace(/D Lim/g, formatName('D Lim'))
-                            .replace(/임담섭/g, formatName('임담섭'));
-                    }
+                    // 카테고리별 분류
+                    const internationalPapers = sortedPapers.filter(p => p.category === 'international' || !p.category); // Default to international if missing
+                    const domesticPapers = sortedPapers.filter(p => p.category === 'domestic');
 
-                    // 제목 링크 처리
-                    const titleHtml = paper.titleLink && paper.titleLink !== '#'
-                        ? `<a href="${paper.titleLink}" class="link-hover text-gray-800 hover:text-[#2b6cb0]" target="_blank">${titlePrefix}${paper.title}</a>`
-                        : `<span class="text-gray-800">${titlePrefix}${paper.title}</span>`; // Google Scholar Link usually in links.url
+                    // 렌더링 함수
+                    const generateListHtml = (paperList) => {
+                        if (paperList.length === 0) {
+                            return `<div class="text-gray-500 italic">No publications in this category.</div>`;
+                        }
+                        return paperList.map(paper => {
+                            // Title Prefix (SCI/KSCI)
+                            let titlePrefix = '';
+                            if (paper.isSCI) {
+                                const qRank = paper.quartile ? `, ${paper.quartile}` : '';
+                                titlePrefix = `<span class="text-red-600 font-bold mr-2">[SCI${qRank}]</span>`;
+                            } else if (paper.isKSCI) {
+                                titlePrefix = `<span class="text-blue-600 font-bold mr-2">[KSCI]</span>`;
+                            }
 
-                    // If simply just title string, assume links.url is the main link
-                    const finalTitleHtml = paper.links?.url
-                        ? `<a href="${paper.links.url}" class="link-hover text-gray-800 hover:text-[#2b6cb0]" target="_blank">${titlePrefix}${paper.title}</a>`
-                        : titleHtml;
+                            // 저자 목록 생성
+                            // 저자 목록 생성
+                            const formatName = (name) => `<u><strong>${name}</strong></u>`;
+                            let authorsHtml = '';
+
+                            if (Array.isArray(paper.authors)) {
+                                authorsHtml = paper.authors
+                                    .map(author => author.bold ? formatName(author.name) : author.name)
+                                    .join(', ');
+                            } else if (typeof paper.authors === 'string') {
+                                authorsHtml = paper.authors
+                                    .replace(/Damsub Lim/g, formatName('Damsub Lim'))
+                                    .replace(/D Lim/g, formatName('D Lim'))
+                                    .replace(/임담섭/g, formatName('임담섭'));
+                            }
+
+                            // 제목 링크 처리
+                            const titleHtml = paper.titleLink && paper.titleLink !== '#'
+                                ? `<a href="${paper.titleLink}" class="link-hover text-gray-800 hover:text-[#2b6cb0]" target="_blank">${titlePrefix}${paper.title}</a>`
+                                : `<span class="text-gray-800">${titlePrefix}${paper.title}</span>`; // Google Scholar Link usually in links.url
+
+                            // If simply just title string, assume links.url is the main link
+                            const finalTitleHtml = paper.links?.url
+                                ? `<a href="${paper.links.url}" class="link-hover text-gray-800 hover:text-[#2b6cb0]" target="_blank">${titlePrefix}${paper.title}</a>`
+                                : titleHtml;
 
 
-                    // 링크 버튼 생성
-                    const linksHtml = [];
-                    if (paper.links.pdf) {
-                        linksHtml.push(`
+                            // 링크 버튼 생성
+                            const linksHtml = [];
+                            if (paper.links.pdf) {
+                                linksHtml.push(`
                             <a href="${paper.links.pdf}" target="_blank" class="text-sm text-[#2b6cb0] hover:text-[#2c5282] flex items-center">
                                 <i class="fas fa-file-pdf mr-1"></i> PDF
                             </a>
                         `);
-                    }
-                    if (paper.links.arxiv) {
-                        const arxivUrl = paper.links.arxiv.startsWith('http') ? paper.links.arxiv : `https://arxiv.org/abs/${paper.links.arxiv}`;
-                        linksHtml.push(`
+                            }
+                            if (paper.links.arxiv) {
+                                const arxivUrl = paper.links.arxiv.startsWith('http') ? paper.links.arxiv : `https://arxiv.org/abs/${paper.links.arxiv}`;
+                                linksHtml.push(`
                             <a href="${arxivUrl}" target="_blank" class="text-sm text-[#2b6cb0] hover:text-[#2c5282] flex items-center">
                                 <i class="fas fa-external-link-alt mr-1"></i> arXiv
                             </a>
                         `);
-                    }
-                    if (paper.links.code) {
-                        linksHtml.push(`
+                            }
+                            if (paper.links.code) {
+                                linksHtml.push(`
                             <a href="${paper.links.code}" target="_blank" class="text-sm text-[#2b6cb0] hover:text-[#2c5282] flex items-center">
                                 <i class="fab fa-github mr-1"></i> Code
                             </a>
                         `);
-                    }
-                    if (paper.links.demo) {
-                        linksHtml.push(`
+                            }
+                            if (paper.links.demo) {
+                                linksHtml.push(`
                             <a href="${paper.links.demo}" target="_blank" class="text-sm text-[#2b6cb0] hover:text-[#2c5282] flex items-center">
                                 <i class="fas fa-external-link-alt mr-1"></i> Demo
                             </a>
                         `);
-                    }
-                    if (paper.links.doi) {
-                        const doiUrl = paper.links.doi.startsWith('http') ? paper.links.doi : `https://doi.org/${paper.links.doi}`;
-                        linksHtml.push(`
+                            }
+                            if (paper.links.doi) {
+                                const doiUrl = paper.links.doi.startsWith('http') ? paper.links.doi : `https://doi.org/${paper.links.doi}`;
+                                linksHtml.push(`
                             <a href="${doiUrl}" target="_blank" class="text-sm text-[#2b6cb0] hover:text-[#2c5282] flex items-center">
                                 <i class="fas fa-link mr-1"></i> DOI
                             </a>
                         `);
-                    }
-                    if (paper.links.url && !paper.links.arxiv && !paper.links.doi && !paper.titleLink) {
-                        // Only add generic link if not already covered
-                        /* Usually title is the link, so we might skip this button to avoid clutter, 
-                           but keeping it for completeness if requested. 
-                           Let's keep it but ensure it doesn't duplicate functionality if title is clickable.
-                           Actually, title linking is best. */
-                    }
-                    if (paper.links.bibtex) {
-                        linksHtml.push(`
+                            }
+                            if (paper.links.url && !paper.links.arxiv && !paper.links.doi && !paper.titleLink) {
+                                // Only add generic link if not already covered
+                                /* Usually title is the link, so we might skip this button to avoid clutter, 
+                                   but keeping it for completeness if requested. 
+                                   Let's keep it but ensure it doesn't duplicate functionality if title is clickable.
+                                   Actually, title linking is best. */
+                            }
+                            if (paper.links.bibtex) {
+                                linksHtml.push(`
                             <a href="${paper.links.bibtex}" target="_blank" class="text-sm text-[#2b6cb0] hover:text-[#2c5282] flex items-center">
                                 <i class="fas fa-quote-right mr-1"></i> BibTeX
                             </a>
                         `);
-                    }
+                            }
 
-                    return `
+                            return `
                         <div class="border-l-4 border-[#2b6cb0] pl-4 py-2 transition hover:bg-gray-50">
                             <h3 class="text-xl font-semibold mb-2 leading-tight">
                                 ${finalTitleHtml}
@@ -1100,45 +1111,45 @@
                             ` : ''}
                         </div>
                     `;
-                }).join('');
-            };
+                        }).join('');
+                    };
 
-            internationalContainer.innerHTML = generateListHtml(internationalPapers);
-            domesticContainer.innerHTML = generateListHtml(domesticPapers);
-        }
+                    internationalContainer.innerHTML = generateListHtml(internationalPapers);
+                    domesticContainer.innerHTML = generateListHtml(domesticPapers);
+                }
 
-        // 페이지 로드 시 논문 목록 자동 로드
-        loadPublications();
+                // 페이지 로드 시 논문 목록 자동 로드
+                loadPublications();
 
-        // ==========================================
-        // 추가 JavaScript 기능
-        // ==========================================
+                // ==========================================
+                // 추가 JavaScript 기능
+                // ==========================================
 
-        /**
-         * Publication 섹션 토글 기능
-         * @param {string} listId - 토글할 리스트 컨테이너 ID
-         * @param {HTMLElement} btn - 클릭된 버튼 요소
-         */
-        function toggleSection(listId, btn) {
-            const list = document.getElementById(listId);
-            const icon = btn.querySelector('i');
+                /**
+                 * Publication 섹션 토글 기능
+                 * @param {string} listId - 토글할 리스트 컨테이너 ID
+                 * @param {HTMLElement} btn - 클릭된 버튼 요소
+                 */
+                function toggleSection(listId, btn) {
+                    const list = document.getElementById(listId);
+                    const icon = btn.querySelector('i');
 
-            if (list.style.maxHeight === '0px' || list.classList.contains('hidden')) {
-                // 열기
-                list.classList.remove('hidden');
-                list.style.maxHeight = list.scrollHeight + "px";
-                icon.style.transform = "rotate(0deg)";
-            } else {
-                // 닫기
-                // 높이를 명시적으로 설정해야 transition이 작동함
-                list.style.maxHeight = list.scrollHeight + "px";
-                setTimeout(() => {
-                    list.style.maxHeight = '0px';
-                }, 10);
-                list.style.overflow = 'hidden';
-                icon.style.transform = "rotate(180deg)";
-            }
-        }
+                    if (list.style.maxHeight === '0px' || list.classList.contains('hidden')) {
+                        // 열기
+                        list.classList.remove('hidden');
+                        list.style.maxHeight = list.scrollHeight + "px";
+                        icon.style.transform = "rotate(0deg)";
+                    } else {
+                        // 닫기
+                        // 높이를 명시적으로 설정해야 transition이 작동함
+                        list.style.maxHeight = list.scrollHeight + "px";
+                        setTimeout(() => {
+                            list.style.maxHeight = '0px';
+                        }, 10);
+                        list.style.overflow = 'hidden';
+                        icon.style.transform = "rotate(180deg)";
+                    }
+                }
 
         // Publications rendered 후 높이 재조정 등 필요할 수 있음
         // 하지만 max-height: none 상태라면 상관없음. 초기엔 열려있어야 함.
