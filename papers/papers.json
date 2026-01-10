@@ -3,7 +3,7 @@
   "papers": [
     {
       "id": "paper1",
-      "bibtex": ""@article{limSiNASPerformanceCentricSRN2026,\n  title = {S-{{iNAS}}: {{A Performance-Centric SRN Modeling}} and {{Analysis}} of {{Time}} and {{Event Based Scaling Strategies}} in {{Ceph-Based Industrial Network-Attached Storage}}},\n  shorttitle = {S-{{iNAS}}},\n  author = {Lim, Damsub and Nguyen, Tuan Anh and Li, Jueying and Choi, Eunmi and Min, Dugki and Cadena, Ruben Machucho and Nogueira, Bruno and Andrade, Ermeson and Callou, Gustavo and Di Mauro, Mario and Torquato, Matheus and Silva, Francisco Airton and Maciel, Paulo},\n  year = 2026,\n  month = mar,\n  journal = {Journal of Network and Systems Management},\n  volume = {34},\n  number = {1},\n  pages = {34},\n  issn = {1064-7570, 1573-7705},\n  doi = {10.1007/s10922-025-10005-6},\n  urldate = {2025-12-05},\n  langid = {english}\n}",
+      "bibtex": "@article{limSiNASPerformanceCentricSRN2026,\n  title = {S-{{iNAS}}: {{A Performance-Centric SRN Modeling}} and {{Analysis}} of {{Time}} and {{Event Based Scaling Strategies}} in {{Ceph-Based Industrial Network-Attached Storage}}},\n  shorttitle = {S-{{iNAS}}},\n  author = {Lim, Damsub and Nguyen, Tuan Anh and Li, Jueying and Choi, Eunmi and Min, Dugki and Cadena, Ruben Machucho and Nogueira, Bruno and Andrade, Ermeson and Callou, Gustavo and Di Mauro, Mario and Torquato, Matheus and Silva, Francisco Airton and Maciel, Paulo},\n  year = 2026,\n  month = mar,\n  journal = {Journal of Network and Systems Management},\n  volume = {34},\n  number = {1},\n  pages = {34},\n  issn = {1064-7570, 1573-7705},\n  doi = {10.1007/s10922-025-10005-6},\n  urldate = {2025-12-05},\n  langid = {english}\n}",
       "links": {
         "pdf": "papers/S-iNAS A Performance-Centric SRN Modeling and Analysis of Time and Event Based Scaling Strategies in Ceph-Based Industrial Network-Attached Storage.pdf",
         "code": "https://github.com/yourusername/project1"
@@ -48,6 +48,7 @@
     }
   ]
 }
+
 
 
 
