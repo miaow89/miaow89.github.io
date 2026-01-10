@@ -1,11 +1,11 @@
 [
   {
     "id": "paper1",
-    "title": "Deep Learning for Image Classification: A Comprehensive Survey",
+    "title": "S-iNAS: A Performance-Centric SRN Modeling and Analysis of Time and Event Based Scaling Strategies in Ceph-Based Industrial Network-Attached Storage",
     "titleLink": "#",
     "authors": [
       {
-        "name": "Your Name",
+        "name": "Damsub Lim",
         "bold": true
       },
       {
@@ -17,10 +17,10 @@
         "bold": false
       }
     ],
-    "venue": "Conference/Journal Name",
-    "year": 2024,
+    "venue": "Journal of Network and Systems Management",
+    "year": 2026,
     "links": {
-      "pdf": "papers/paper1.pdf",
+      "pdf": "papers/S-iNAS A Performance-Centric SRN Modeling and Analysis of Time and Event Based Scaling Strategies in Ceph-Based Industrial Network-Attached Storage.pdf",
       "arxiv": "https://arxiv.org/abs/xxxx.xxxxx",
       "code": "https://github.com/yourusername/project1",
       "demo": null,
@@ -79,3 +79,4 @@
     "abstract": null
   }
 ]
+
