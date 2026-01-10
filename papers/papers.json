@@ -1,126 +1,50 @@
-[
-  {
-    "id": "paper1",
-    "title": "S-iNAS: A Performance-Centric SRN Modeling and Analysis of Time and Event Based Scaling Strategies in Ceph-Based Industrial Network-Attached Storage",
-    "titleLink": "#",
-    "authors": [
-      {
-        "name": "Damsub Lim",
-        "bold": true
-      },
-      {
-        "name": "Tuan Anh, Nguyen",
-        "bold": false
-      },
-      {
-        "name": "Jueying, Li",
-        "bold": false
-      },
-      {
-        "name": "Eunmi, Choi",
-        "bold": false
-      },
-      {
-        "name": "Dugki, Min",
-        "bold": false
-      },
-      {
-        "name": "Ruben Machucho, Cadena",
-        "bold": false
-      },
-      {
-        "name": "Bruno, Nogueira",
-        "bold": false
-      },
-      {
-        "name": "Ermeson, Andrade",
-        "bold": false
-      },
-      {
-        "name": "Gustavo, Callou",
-        "bold": false
-      },
-      {
-        "name": "Mario, Di Mauro",
-        "bold": false
-      },
-      {
-        "name": "Matheus, Torquato",
-        "bold": false
-      },
-      {
-        "name": "Francisco Airton, Silva",
-        "bold": false
-      },
-      {
-        "name": "Paulo, Maciel",
-        "bold": false
+{
+  "yourName": "Your Name",
+  "papers": [
+    {
+      "id": "paper1",
+      "bibtex": "@inproceedings{paper1_2024,\n  title={Deep Learning for Image Classification: A Comprehensive Survey},\n  author={Your Name and Co-Author Name and Another Author},\n  booktitle={Conference/Journal Name},\n  year={2024},\n  url={https://arxiv.org/abs/xxxx.xxxxx},\n  pdf={papers/paper1.pdf},\n  code={https://github.com/yourusername/project1}\n}",
+      "links": {
+        "pdf": "papers/paper1.pdf",
+        "code": "https://github.com/yourusername/project1"
       }
-    ],
-    "venue": "Journal of Network and Systems Management",
-    "year": 2025. 12. 5,
-    "links": {
-      "pdf": "papers/S-iNAS A Performance-Centric SRN Modeling and Analysis of Time and Event Based Scaling Strategies in Ceph-Based Industrial Network-Attached Storage.pdf",
-      "doi": "https://link.springer.com/article/10.1007/s10922-025-10005-6",
-      "code": "https://github.com/yourusername/project1",
-      "demo": null,
-      "bibtex": null
     },
-    "abstract": "Optional: Abstract text here"
-  },
-  {
-    "id": "paper2",
-    "title": "Multi-Modal Learning for Visual Question Answering",
-    "titleLink": "#",
-    "authors": [
-      {
-        "name": "Your Name",
-        "bold": true
+    {
+      "id": "paper1-manual",
+      "title": "Deep Learning for Image Classification: A Comprehensive Survey",
+      "titleLink": "#",
+      "authors": [
+        {
+          "name": "Your Name",
+          "bold": true
+        },
+        {
+          "name": "Co-Author Name",
+          "bold": false
+        },
+        {
+          "name": "Another Author",
+          "bold": false
+        }
+      ],
+      "venue": "Conference/Journal Name",
+      "year": 2024,
+      "links": {
+        "pdf": "papers/paper1.pdf",
+        "arxiv": "https://arxiv.org/abs/xxxx.xxxxx",
+        "code": "https://github.com/yourusername/project1",
+        "demo": null,
+        "bibtex": null
       },
-      {
-        "name": "Collaborator Name",
-        "bold": false
-      }
-    ],
-    "venue": "Workshop Name",
-    "year": 2023,
-    "links": {
-      "pdf": "papers/paper2.pdf",
-      "arxiv": null,
-      "code": "https://github.com/yourusername/project2",
-      "demo": null,
-      "bibtex": null
+      "abstract": "Optional: Abstract text here"
     },
-    "abstract": null
-  },
-  {
-    "id": "paper3",
-    "title": "Efficient Object Detection in Real-Time Applications",
-    "titleLink": "#",
-    "authors": [
-      {
-        "name": "Your Name",
-        "bold": true
-      },
-      {
-        "name": "Team Member",
-        "bold": false
-      }
-    ],
-    "venue": "Journal Name",
-    "year": 2023,
-    "links": {
-      "pdf": "papers/paper3.pdf",
-      "arxiv": null,
-      "code": "https://github.com/yourusername/project3",
-      "demo": "https://demo-url.com",
-      "bibtex": null
+    {
+      "id": "paper2",
+      "bibtex": "@inproceedings{paper2_2023,\n  title={Multi-Modal Learning for Visual Question Answering},\n  author={Your Name and Collaborator Name},\n  booktitle={Workshop Name},\n  year={2023},\n  pdf={papers/paper2.pdf},\n  code={https://github.com/yourusername/project2}\n}"
     },
-    "abstract": null
-  }
-]
-
-
-
-
-
+    {
+      "id": "paper3",
+      "bibtex": "@article{paper3_2023,\n  title={Efficient Object Detection in Real-Time Applications},\n  author={Your Name and Team Member},\n  journal={Journal Name},\n  year={2023},\n  pdf={papers/paper3.pdf},\n  code={https://github.com/yourusername/project3},\n  demo={https://demo-url.com}\n}"
+    }
+  ]
+}
