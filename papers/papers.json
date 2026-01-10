@@ -1,0 +1,81 @@
+[
+  {
+    "id": "paper1",
+    "title": "Deep Learning for Image Classification: A Comprehensive Survey",
+    "titleLink": "#",
+    "authors": [
+      {
+        "name": "Your Name",
+        "bold": true
+      },
+      {
+        "name": "Co-Author Name",
+        "bold": false
+      },
+      {
+        "name": "Another Author",
+        "bold": false
+      }
+    ],
+    "venue": "Conference/Journal Name",
+    "year": 2024,
+    "links": {
+      "pdf": "papers/paper1.pdf",
+      "arxiv": "https://arxiv.org/abs/xxxx.xxxxx",
+      "code": "https://github.com/yourusername/project1",
+      "demo": null,
+      "bibtex": null
+    },
+    "abstract": "Optional: Abstract text here"
+  },
+  {
+    "id": "paper2",
+    "title": "Multi-Modal Learning for Visual Question Answering",
+    "titleLink": "#",
+    "authors": [
+      {
+        "name": "Your Name",
+        "bold": true
+      },
+      {
+        "name": "Collaborator Name",
+        "bold": false
+      }
+    ],
+    "venue": "Workshop Name",
+    "year": 2023,
+    "links": {
+      "pdf": "papers/paper2.pdf",
+      "arxiv": null,
+      "code": "https://github.com/yourusername/project2",
+      "demo": null,
+      "bibtex": null
+    },
+    "abstract": null
+  },
+  {
+    "id": "paper3",
+    "title": "Efficient Object Detection in Real-Time Applications",
+    "titleLink": "#",
+    "authors": [
+      {
+        "name": "Your Name",
+        "bold": true
+      },
+      {
+        "name": "Team Member",
+        "bold": false
+      }
+    ],
+    "venue": "Journal Name",
+    "year": 2023,
+    "links": {
+      "pdf": "papers/paper3.pdf",
+      "arxiv": null,
+      "code": "https://github.com/yourusername/project3",
+      "demo": "https://demo-url.com",
+      "bibtex": null
+    },
+    "abstract": null
+  }
+]
