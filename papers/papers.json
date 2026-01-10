@@ -3,23 +3,7 @@
   "papers": [
     {
       "id": "paper1",
-      "bibtex": "@article{limSiNASPerformanceCentricSRN2026,
-  title = {S-{{iNAS}}: {{A Performance-Centric SRN Modeling}} and {{Analysis}} of {{Time}} and {{Event Based Scaling Strategies}} in {{Ceph-Based Industrial Network-Attached Storage}}},
-  shorttitle = {S-{{iNAS}}},
-  author = {Lim, Damsub and Nguyen, Tuan Anh and Li, Jueying and Choi, Eunmi and Min, Dugki and Cadena, Ruben Machucho and Nogueira, Bruno and Andrade, Ermeson and Callou, Gustavo and Di Mauro, Mario and Torquato, Matheus and Silva, Francisco Airton and Maciel, Paulo},
-  year = 2026,
-  month = mar,
-  journal = {Journal of Network and Systems Management},
-  volume = {34},
-  number = {1},
-  pages = {34},
-  issn = {1064-7570, 1573-7705},
-  doi = {10.1007/s10922-025-10005-6},
-  urldate = {2025-12-05},
-  langid = {english},
-  file = {D:\Zotero_Ref\storage\728TC98L\Lim 등 - 2026 - S-iNAS A Performance-Centric SRN Modeling and Analysis of Time and Event Based Scaling Strategies i.pdf}
-}
-",
+      "bibtex": "@article{limSiNASPerformanceCentricSRN2026, title = {S-{{iNAS}}: {{A Performance-Centric SRN Modeling}} and {{Analysis}} of {{Time}} and {{Event Based Scaling Strategies}} in {{Ceph-Based Industrial Network-Attached Storage}}},  shorttitle = {S-{{iNAS}}},  author = {Lim, Damsub and Nguyen, Tuan Anh and Li, Jueying and Choi, Eunmi and Min, Dugki and Cadena, Ruben Machucho and Nogueira, Bruno and Andrade, Ermeson and Callou, Gustavo and Di Mauro, Mario and Torquato, Matheus and Silva, Francisco Airton and Maciel, Paulo},  year = 2026,  month = mar,  journal = {Journal of Network and Systems Management},  volume = {34},  number = {1},  pages = {34},  issn = {1064-7570, 1573-7705},  doi = {10.1007/s10922-025-10005-6},  urldate = {2025-12-05},  langid = {english},  file = {D:\Zotero_Ref\storage\728TC98L\Lim 등 - 2026 - S-iNAS A Performance-Centric SRN Modeling and Analysis of Time and Event Based Scaling Strategies i.pdf}}",
       "links": {
         "pdf": "papers/S-iNAS A Performance-Centric SRN Modeling and Analysis of Time and Event Based Scaling Strategies in Ceph-Based Industrial Network-Attached Storage.pdf",
         "code": "https://github.com/yourusername/project1"
@@ -64,4 +48,5 @@
     }
   ]
 }
+
 
