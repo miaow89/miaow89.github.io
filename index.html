@@ -338,11 +338,25 @@
                         논문 목록은 papers/papers.json 파일을 읽어서 자동으로 렌더링됩니다.
                         새 논문을 추가하려면 papers/papers.json 파일을 수정하세요.
                     -->
-                    <div id="publications-list" class="space-y-6">
-                        <!-- 로딩 메시지 -->
-                        <div class="text-center text-gray-500 py-8">
-                            <i class="fas fa-spinner fa-spin mr-2"></i>
-                            논문 목록을 불러오는 중...
+                    <div id="publications-container" class="space-y-12">
+                        <!-- International Section -->
+                        <div id="publications-international-section">
+                            <h3 class="text-2xl font-semibold text-gray-800 mb-6 border-b pb-2">International Journal/Conference</h3>
+                            <div id="publications-international-list" class="space-y-6">
+                                <div class="text-center text-gray-500 py-4">
+                                    <i class="fas fa-spinner fa-spin mr-2"></i> Loading...
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Domestic Section -->
+                        <div id="publications-domestic-section">
+                            <h3 class="text-2xl font-semibold text-gray-800 mb-6 border-b pb-2">Domestic Journal/Conference</h3>
+                            <div id="publications-domestic-list" class="space-y-6">
+                                <div class="text-center text-gray-500 py-4">
+                                    <i class="fas fa-spinner fa-spin mr-2"></i> Loading...
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </section>
@@ -854,106 +868,134 @@
          * 논문 목록을 HTML로 렌더링
          * @param {Array} papers - 논문 정보 배열
          */
+        /**
+         * 논문 목록을 HTML로 렌더링
+         * @param {Array} papers - 논문 정보 배열
+         */
         function renderPublications(papers) {
-            const container = document.getElementById('publications-list');
+            const internationalContainer = document.getElementById('publications-international-list');
+            const domesticContainer = document.getElementById('publications-domestic-list');
             
             if (!papers || papers.length === 0) {
-                container.innerHTML = `
+                const emptyMsg = `
                     <div class="text-center text-gray-500 py-8">
-                        <i class="fas fa-inbox mr-2"></i>
-                        등록된 논문이 없습니다. papers/papers.json 파일에 논문 정보를 추가해주세요.
+                        <i class="fas fa-inbox mr-2"></i> No papers found.
                     </div>
                 `;
+                internationalContainer.innerHTML = emptyMsg;
+                domesticContainer.innerHTML = emptyMsg;
                 return;
             }
             
             // 연도순으로 정렬 (최신순)
             const sortedPapers = [...papers].sort((a, b) => (b.year || 0) - (a.year || 0));
-            
-            container.innerHTML = sortedPapers.map(paper => {
-                // 저자 목록 생성
-                const authorsHtml = paper.authors
-                    .map(author => author.bold ? `<strong>${author.name}</strong>` : author.name)
-                    .join(', ');
-                
-                // 제목 링크 처리
-                const titleHtml = paper.titleLink && paper.titleLink !== '#'
-                    ? `<a href="${paper.titleLink}" class="link-hover text-gray-800 hover:text-[#2b6cb0]" target="_blank">${paper.title}</a>`
-                    : `<span class="text-gray-800">${paper.title}</span>`;
-                
-                // 링크 버튼 생성
-                const linksHtml = [];
-                if (paper.links.pdf) {
-                    linksHtml.push(`
-                        <a href="${paper.links.pdf}" target="_blank" class="text-sm text-[#2b6cb0] hover:text-[#2c5282] flex items-center">
-                            <i class="fas fa-file-pdf mr-1"></i> PDF
-                        </a>
-                    `);
-                }
-                if (paper.links.arxiv) {
-                    const arxivUrl = paper.links.arxiv.startsWith('http') ? paper.links.arxiv : `https://arxiv.org/abs/${paper.links.arxiv}`;
-                    linksHtml.push(`
-                        <a href="${arxivUrl}" target="_blank" class="text-sm text-[#2b6cb0] hover:text-[#2c5282] flex items-center">
-                            <i class="fas fa-external-link-alt mr-1"></i> arXiv
-                        </a>
-                    `);
-                }
-                if (paper.links.code) {
-                    linksHtml.push(`
-                        <a href="${paper.links.code}" target="_blank" class="text-sm text-[#2b6cb0] hover:text-[#2c5282] flex items-center">
-                            <i class="fab fa-github mr-1"></i> Code
-                        </a>
-                    `);
-                }
-                if (paper.links.demo) {
-                    linksHtml.push(`
-                        <a href="${paper.links.demo}" target="_blank" class="text-sm text-[#2b6cb0] hover:text-[#2c5282] flex items-center">
-                            <i class="fas fa-external-link-alt mr-1"></i> Demo
-                        </a>
-                    `);
-                }
-                if (paper.links.doi) {
-                    const doiUrl = paper.links.doi.startsWith('http') ? paper.links.doi : `https://doi.org/${paper.links.doi}`;
-                    linksHtml.push(`
-                        <a href="${doiUrl}" target="_blank" class="text-sm text-[#2b6cb0] hover:text-[#2c5282] flex items-center">
-                            <i class="fas fa-link mr-1"></i> DOI
-                        </a>
-                    `);
-                }
-                if (paper.links.url && !paper.links.arxiv && !paper.links.doi) {
-                    linksHtml.push(`
-                        <a href="${paper.links.url}" target="_blank" class="text-sm text-[#2b6cb0] hover:text-[#2c5282] flex items-center">
-                            <i class="fas fa-external-link-alt mr-1"></i> Link
-                        </a>
-                    `);
-                }
-                if (paper.links.bibtex) {
-                    linksHtml.push(`
-                        <a href="${paper.links.bibtex}" target="_blank" class="text-sm text-[#2b6cb0] hover:text-[#2c5282] flex items-center">
-                            <i class="fas fa-quote-right mr-1"></i> BibTeX
-                        </a>
-                    `);
-                }
-                
-                return `
-                    <div class="border-l-4 border-[#2b6cb0] pl-4 py-2">
-                        <h3 class="text-xl font-semibold mb-2">
-                            ${titleHtml}
-                        </h3>
-                        <p class="text-gray-600 mb-2">
-                            ${authorsHtml}
-                        </p>
-                        <p class="text-gray-600 mb-3">
-                            <em>${paper.venue}${paper.year ? ` (${paper.year})` : ''}</em>
-                        </p>
-                        ${linksHtml.length > 0 ? `
-                            <div class="flex flex-wrap gap-3">
-                                ${linksHtml.join('')}
-                            </div>
-                        ` : ''}
-                    </div>
-                `;
-            }).join('');
+
+            // 카테고리별 분류
+            const internationalPapers = sortedPapers.filter(p => p.category === 'international' || !p.category); // Default to international if missing
+            const domesticPapers = sortedPapers.filter(p => p.category === 'domestic');
+
+            // 렌더링 함수
+            const generateListHtml = (paperList) => {
+                 if (paperList.length === 0) {
+                    return `<div class="text-gray-500 italic">No publications in this category.</div>`;
+                 }
+                 return paperList.map(paper => {
+                    // SCI 여부에 따른 제목 처리
+                    const titlePrefix = paper.isSCI ? '<span class="text-red-600 font-bold mr-2">[SCI]</span>' : '';
+                    
+                    // 저자 목록 생성
+                    const authorsHtml = paper.authors
+                        .map(author => author.bold ? `<strong>${author.name}</strong>` : author.name)
+                        .join(', ');
+                    
+                    // 제목 링크 처리
+                    const titleHtml = paper.titleLink && paper.titleLink !== '#'
+                        ? `<a href="${paper.titleLink}" class="link-hover text-gray-800 hover:text-[#2b6cb0]" target="_blank">${titlePrefix}${paper.title}</a>`
+                        : `<span class="text-gray-800">${titlePrefix}${paper.title}</span>`; // Google Scholar Link usually in links.url
+                    
+                    // If simply just title string, assume links.url is the main link
+                    const finalTitleHtml = paper.links?.url 
+                        ? `<a href="${paper.links.url}" class="link-hover text-gray-800 hover:text-[#2b6cb0]" target="_blank">${titlePrefix}${paper.title}</a>`
+                        : titleHtml;
+
+                    
+                    // 링크 버튼 생성
+                    const linksHtml = [];
+                    if (paper.links.pdf) {
+                        linksHtml.push(`
+                            <a href="${paper.links.pdf}" target="_blank" class="text-sm text-[#2b6cb0] hover:text-[#2c5282] flex items-center">
+                                <i class="fas fa-file-pdf mr-1"></i> PDF
+                            </a>
+                        `);
+                    }
+                    if (paper.links.arxiv) {
+                        const arxivUrl = paper.links.arxiv.startsWith('http') ? paper.links.arxiv : `https://arxiv.org/abs/${paper.links.arxiv}`;
+                        linksHtml.push(`
+                            <a href="${arxivUrl}" target="_blank" class="text-sm text-[#2b6cb0] hover:text-[#2c5282] flex items-center">
+                                <i class="fas fa-external-link-alt mr-1"></i> arXiv
+                            </a>
+                        `);
+                    }
+                    if (paper.links.code) {
+                        linksHtml.push(`
+                            <a href="${paper.links.code}" target="_blank" class="text-sm text-[#2b6cb0] hover:text-[#2c5282] flex items-center">
+                                <i class="fab fa-github mr-1"></i> Code
+                            </a>
+                        `);
+                    }
+                    if (paper.links.demo) {
+                        linksHtml.push(`
+                            <a href="${paper.links.demo}" target="_blank" class="text-sm text-[#2b6cb0] hover:text-[#2c5282] flex items-center">
+                                <i class="fas fa-external-link-alt mr-1"></i> Demo
+                            </a>
+                        `);
+                    }
+                    if (paper.links.doi) {
+                        const doiUrl = paper.links.doi.startsWith('http') ? paper.links.doi : `https://doi.org/${paper.links.doi}`;
+                        linksHtml.push(`
+                            <a href="${doiUrl}" target="_blank" class="text-sm text-[#2b6cb0] hover:text-[#2c5282] flex items-center">
+                                <i class="fas fa-link mr-1"></i> DOI
+                            </a>
+                        `);
+                    }
+                    if (paper.links.url && !paper.links.arxiv && !paper.links.doi && !paper.titleLink) {
+                         // Only add generic link if not already covered
+                         /* Usually title is the link, so we might skip this button to avoid clutter, 
+                            but keeping it for completeness if requested. 
+                            Let's keep it but ensure it doesn't duplicate functionality if title is clickable.
+                            Actually, title linking is best. */
+                    }
+                    if (paper.links.bibtex) {
+                        linksHtml.push(`
+                            <a href="${paper.links.bibtex}" target="_blank" class="text-sm text-[#2b6cb0] hover:text-[#2c5282] flex items-center">
+                                <i class="fas fa-quote-right mr-1"></i> BibTeX
+                            </a>
+                        `);
+                    }
+                    
+                    return `
+                        <div class="border-l-4 border-[#2b6cb0] pl-4 py-2 transition hover:bg-gray-50">
+                            <h3 class="text-xl font-semibold mb-2 leading-tight">
+                                ${finalTitleHtml}
+                            </h3>
+                            <p class="text-gray-600 mb-2">
+                                ${authorsHtml}
+                            </p>
+                            <p class="text-gray-500 text-sm mb-3">
+                                <em>${paper.venue}${paper.year ? ` (${paper.year})` : ''}</em>
+                            </p>
+                            ${linksHtml.length > 0 ? `
+                                <div class="flex flex-wrap gap-3 mt-2">
+                                    ${linksHtml.join('')}
+                                </div>
+                            ` : ''}
+                        </div>
+                    `;
+                }).join('');
+            };
+
+            internationalContainer.innerHTML = generateListHtml(internationalPapers);
+            domesticContainer.innerHTML = generateListHtml(domesticPapers);
         }
         
         // 페이지 로드 시 논문 목록 자동 로드
