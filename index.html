@@ -105,14 +105,23 @@
                     <img src="assets/260105-Profile-Damsub Lim.jpg" alt="Profile" class="w-32 h-32 rounded-full object-cover border-4 border-gray-200">
                 </div>
                 
-                <!-- TODO: 이름 수정 -->
-                <h1 class="text-2xl font-bold text-center mb-2" id="mobile-name">Damsub Lim (임담섭)</h1>
+                <!-- Name -->
+                <h1 class="text-2xl font-bold text-center mb-2">
+                    <span class="lang-en">Damsub Lim</span>
+                    <span class="lang-ko" style="display: none;">임담섭</span>
+                </h1>
                 
-                <!-- TODO: 직위/소속 수정 (예: "PhD Student at 서울대학교", "Software Engineer at Google") -->
-                <p class="text-center text-gray-600 mb-4" id="mobile-position">PhD Student at OO University</p>
+                <!-- Position -->
+                <p class="text-center text-gray-600 mb-4">
+                    <span class="lang-en">PostDoc Researcher at KADA, Konkuk Univ.</span>
+                    <span class="lang-ko" style="display: none;">건국대학교 KADA 박사후연구원</span>
+                </p>
                 
-                <!-- TODO: 간단한 소개 한 문장 수정 -->
-                <p class="text-center text-sm text-gray-600 mb-6" id="mobile-bio">Research interests in Machine Learning and Computer Vision</p>
+                <!-- Bio -->
+                <p class="text-center text-sm text-gray-600 mb-6">
+                    <span class="lang-en">Research interests in Distributed Systems and Performance Reliability</span>
+                    <span class="lang-ko" style="display: none;">관심분야: 분산 시스템 및 성능 신뢰성</span>
+                </p>
                 
                 <!-- TODO: 소셜 링크 URL 수정 (필요 없는 링크는 전체 <a> 태그 삭제) -->
                 <div class="flex justify-center space-x-4 mb-6">
@@ -129,9 +138,10 @@
                         <i class="fas fa-graduation-cap text-2xl"></i>
                     </a>
                     <!-- Email - TODO: 이메일 주소 변경 -->
-                    <a href="mailto:your.email@example.com" class="text-gray-600 hover:text-[#2b6cb0] transition-colors" title="Email">
+                    <!-- Email -->
+                    <button onclick="copyToClipboard('miaow89@konkuk.ac.kr')" class="text-gray-600 hover:text-[#2b6cb0] transition-colors focus:outline-none" title="Copy Email">
                         <i class="fas fa-envelope text-2xl"></i>
-                    </a>
+                    </button>
                     <!-- CV Download - TODO: assets/cv.pdf 경로에 실제 CV 파일 업로드 또는 링크 변경 -->
                     <a href="assets/cv.pdf" target="_blank" class="text-gray-600 hover:text-[#2b6cb0] transition-colors" title="Download CV">
                         <i class="fas fa-file-pdf text-2xl"></i>
@@ -157,16 +167,22 @@
                 
                 <!-- ========== 이름 ========== -->
                 <!-- TODO: 이름 수정 (모바일 사이드바 라인 84와 동일하게) -->
-                <h1 class="text-3xl font-bold text-center mb-3" id="sidebar-name">Damsub Lim (임담섭)</h1>
+                <!-- ========== Name ========== -->
+                <h1 class="text-3xl font-bold text-center mb-3">
+                    <span class="lang-en">Damsub Lim</span>
+                    <span class="lang-ko" style="display: none;">임담섭</span>
+                </h1>
                 
-                <!-- ========== 직위/소속 ========== -->
-                <!-- TODO: 직위/소속 수정 (모바일 사이드바 라인 87와 동일하게) -->
-                <p class="text-center text-gray-600 mb-4" id="sidebar-position">PhD Student at OO University</p>
+                <!-- ========== Position ========== -->
+                <p class="text-center text-gray-600 mb-4">
+                    <span class="lang-en">PostDoc Researcher at KADA, Konkuk Univ.</span>
+                    <span class="lang-ko" style="display: none;">건국대학교 KADA 박사후연구원</span>
+                </p>
                 
-                <!-- ========== 간단한 소개 ========== -->
-                <!-- TODO: 소개 수정 (모바일 사이드바 라인 90과 동일하게) -->
-                <p class="text-center text-sm text-gray-600 mb-8 leading-relaxed" id="sidebar-bio">
-                    Research interests in Machine Learning and Computer Vision
+                <!-- ========== Bio ========== -->
+                <p class="text-center text-sm text-gray-600 mb-8 leading-relaxed">
+                    <span class="lang-en">Research interests in Distributed Systems and Performance Reliability</span>
+                    <span class="lang-ko" style="display: none;">관심분야: 분산 시스템 및 성능 신뢰성</span>
                 </p>
                 
                 <!-- ========== 소셜 링크 아이콘 ========== -->
@@ -186,9 +202,10 @@
                         <i class="fas fa-graduation-cap text-2xl"></i>
                     </a>
                     <!-- Email -->
-                    <a href="mailto:miaow89@konkuk.ac.kr" class="text-gray-600 hover:text-[#2b6cb0] transition-colors" title="Email">
+                    <!-- Email -->
+                    <button onclick="copyToClipboard('miaow89@konkuk.ac.kr')" class="text-gray-600 hover:text-[#2b6cb0] transition-colors focus:outline-none" title="Copy Email">
                         <i class="fas fa-envelope text-2xl"></i>
-                    </a>
+                    </button>
                     <!-- CV Download -->
                     <a href="assets/cv.pdf" target="_blank" class="text-gray-600 hover:text-[#2b6cb0] transition-colors" title="Download CV">
                         <i class="fas fa-file-pdf text-2xl"></i>
@@ -200,7 +217,7 @@
                 <!-- TODO: 이름과 연도 수정 (모바일 Footer 라인 366과 동일하게) -->
                 <div class="mt-auto pt-8 border-t border-gray-200">
                     <p class="text-xs text-center text-gray-500">
-                        © 2026 Damsub Lim (임담섭). All rights reserved.
+                        © 2026 Damsub Lim. All rights reserved.
                     </p>
                 </div>
             </div>
@@ -210,22 +227,46 @@
              우측 메인 콘텐츠 영역
              ========================================== -->
         <main class="flex-1 md:ml-80 min-h-screen">
-            <div class="max-w-4xl mx-auto px-6 md:px-12 py-8 md:py-12">
+            <div class="max-w-4xl mx-auto px-6 md:px-12 py-8 md:py-12 relative">
+                
+                <!-- Language Toggle Button -->
+                <button id="langToggle" class="absolute top-8 right-6 md:right-12 bg-white border border-gray-300 hover:bg-gray-50 text-gray-700 px-3 py-1 rounded-md text-sm font-medium transition-colors shadow-sm flex items-center">
+                    <i class="fas fa-globe mr-2 text-gray-400"></i>
+                    <span>KO</span>
+                </button>
                 
                 <!-- ==========================================
                      About Me 섹션 - 자기소개
                      ========================================== -->
-                <section id="about" class="mb-12">
+                <section id="about" class="mb-12 pt-4"> 
                     <h2 class="text-3xl font-bold text-[#2b6cb0] mb-6">About Me</h2>
-                    <div class="prose max-w-none text-gray-700 leading-relaxed">
+                    
+                    <!-- English Content -->
+                    <div class="lang-en prose max-w-none text-gray-700 leading-relaxed">
                         <p class="mb-4">
-                            I am a PhD Student at Konkuk University. My main research direction is the <strong>Performance Modeling and Analysis</strong> of large-scale distributed storage systems, with a particular focus on <strong>Ceph</strong>.
+                            I am currently a PostDoc at <a href="https://sites.google.com/view/kadalab/home" target="_blank" class="text-[#2b6cb0] hover:underline">KADA</a> at Konkuk University. I received my Ph.D. in Engineering from the <a href="https://dms.konkuk.ac.kr/" target="_blank" class="text-[#2b6cb0] hover:underline">DMS Laboratory</a> at Konkuk University under the advices of Professor Dugki Min. Post-graduation, I maintain a strong collaborative relationship with the lab to further deepen my research and create synergistic outcomes.
                         </p>
                         <p class="mb-4">
-                            I am currently working on developing Stochastic Reward Net (SRN) models to analyze and optimize auto-scaling strategies for industrial network-attached storage. My goal is to design highly scalable and reliable storage architectures for cloud and edge computing environments.
+                            I also continue to collaborate with Professor <a href="https://scholar.google.com/citations?user=q6gCa4cAAAAJ&hl=en" target="_blank" class="text-[#2b6cb0] hover:underline">Tuan Anh Nguyen</a> of HUIT in Vietnam, a former senior member of the DMS Laboratory, and we are deriving research results on various topics.
+                        </p>
+                        <p class="mb-4">
+                            My research interests lie in <strong>analyzing and modeling various systems to ensure reliability and stability</strong>. I am actively engaged in research on Distributed Systems, Cloud Computing, IoT and SDN, as well as the Performance, Availability, and Dependability Evaluation of Computer and Storage Systems.
                         </p>
                     </div>
-    </section>
+
+                    <!-- Korean Content (Hidden by default) -->
+                    <div class="lang-ko prose max-w-none text-gray-700 leading-relaxed" style="display: none;">
+                        <p class="mb-4">
+                            저는 현재 건국대학교 <a href="https://sites.google.com/view/kadalab/home" target="_blank" class="text-[#2b6cb0] hover:underline">KADA</a>에서 PostDoc으로 재직중입니다. 건국대학교 <a href="https://dms.konkuk.ac.kr/" target="_blank" class="text-[#2b6cb0] hover:underline">DMS 연구실</a>에서 민덕기 교수님의 지도 아래 공학 박사 학위를 취득하였으며, 박사 취득 후에도 계속 연구실과의 유기적인 협업 체계를 지속함으로써 연구의 깊이를 더하고 시너지를 창출하고 있습니다.
+                        </p>
+                        <p class="mb-4">
+                            <a href="https://dms.konkuk.ac.kr/" target="_blank" class="text-[#2b6cb0] hover:underline">DMS 연구실</a>의 선배였던, 현재는 베트남의 HUIT의 <a href="https://scholar.google.com/citations?user=q6gCa4cAAAAJ&hl=en" target="_blank" class="text-[#2b6cb0] hover:underline">Tuan Anh Nguyen</a> 교수와 연구 협업을 지속하고 있으며, 다양한 주제에 대한 연구 결과를 도출하고 있습니다.
+                        </p>
+                        <p class="mb-4">
+                            제 연구 관심사는 <strong>다양한 시스템을 분석하고 모델링하여 신뢰성과 안정성을 확보</strong>하는 데에 있으며, Distributed System, Cloud Computing, IoT and SDN, Performance, Availability and Dependability Evaluation of Computer and Storages Systems와 같은 최신 기술을 적극적으로 연구하고 있습니다.
+                        </p>
+                    </div>
+                </section>
 
                 <div class="section-divider"></div>
                 
@@ -235,22 +276,52 @@
                      ========================================== -->
                 <section id="research-interests" class="mb-12">
                     <h2 class="text-3xl font-bold text-[#2b6cb0] mb-6">Research Interests</h2>
-                    <ul class="list-disc list-inside space-y-3 text-gray-700 text-lg">
+                    
+                    <!-- English Content -->
+                    <ul class="lang-en list-disc list-inside space-y-3 text-gray-700 text-lg">
                         <li>
-                            <span class="font-semibold text-gray-900">Distributed Storage Systems</span>
-                            <p class="text-base text-gray-600 ml-6 mt-1 mb-2">Focus on Ceph, RADOS, and scalable storage architectures.</p>
+                            <span class="font-semibold text-gray-900">Performance, Availability, and Dependability Evaluation</span>
+                            <p class="text-base text-gray-600 ml-6 mt-1 mb-2">Modeling and analysis of computer and storage systems using SRN and Petri Nets.</p>
                         </li>
                         <li>
-                            <span class="font-semibold text-gray-900">Performance Modeling & Simulation</span>
-                            <p class="text-base text-gray-600 ml-6 mt-1 mb-2">Utilizing Stochastic Reward Nets (SRN) and Petri Nets for system analysis.</p>
+                            <span class="font-semibold text-gray-900">Agent AI Framework</span>
+                            <p class="text-base text-gray-600 ml-6 mt-1 mb-2">Development of intelligent multi-agent frameworks for autonomous system management.</p>
                         </li>
                         <li>
-                            <span class="font-semibold text-gray-900">Cloud Infrastructure Scalability</span>
-                            <p class="text-base text-gray-600 ml-6 mt-1 mb-2">Designing auto-scaling controllers and optimization strategies.</p>
+                            <span class="font-semibold text-gray-900">Distributed Systems</span>
+                            <p class="text-base text-gray-600 ml-6 mt-1 mb-2">Research on large-scale distributed architectures and storage systems.</p>
                         </li>
                         <li>
-                            <span class="font-semibold text-gray-900">Industrial Network-Attached Storage</span>
-                            <p class="text-base text-gray-600 ml-6 mt-1">Research on iNAS performance and reliability.</p>
+                            <span class="font-semibold text-gray-900">Cloud Computing</span>
+                            <p class="text-base text-gray-600 ml-6 mt-1 mb-2">Optimization of cloud infrastructure, auto-scaling, and resource management.</p>
+                        </li>
+                        <li>
+                            <span class="font-semibold text-gray-900">IoT and SDN</span>
+                            <p class="text-base text-gray-600 ml-6 mt-1">Integration of Internet of Things with Software-Defined Networking.</p>
+                        </li>
+                    </ul>
+
+                    <!-- Korean Content (Hidden by default) -->
+                    <ul class="lang-ko list-disc list-inside space-y-3 text-gray-700 text-lg" style="display: none;">
+                        <li>
+                            <span class="font-semibold text-gray-900">성능, 가용성 및 신뢰성 평가 (Evaluation)</span>
+                            <p class="text-base text-gray-600 ml-6 mt-1 mb-2">SRN 및 Petri Nets를 활용한 컴퓨터/스토리지 시스템 분석 및 모델링.</p>
+                        </li>
+                        <li>
+                            <span class="font-semibold text-gray-900">에이전트 AI 프레임워크 (Agent AI Framework)</span>
+                            <p class="text-base text-gray-600 ml-6 mt-1 mb-2">자율 시스템 관리를 위한 지능형 멀티 에이전트 프레임워크 개발.</p>
+                        </li>
+                        <li>
+                            <span class="font-semibold text-gray-900">분산 시스템 (Distributed Systems)</span>
+                            <p class="text-base text-gray-600 ml-6 mt-1 mb-2">대규모 분산 아키텍처 및 스토리지 시스템 연구.</p>
+                        </li>
+                        <li>
+                            <span class="font-semibold text-gray-900">클라우드 컴퓨팅 (Cloud Computing)</span>
+                            <p class="text-base text-gray-600 ml-6 mt-1 mb-2">클라우드 인프라 최적화, 오토스케일링 및 자원 관리.</p>
+                        </li>
+                        <li>
+                            <span class="font-semibold text-gray-900">IoT 및 SDN</span>
+                            <p class="text-base text-gray-600 ml-6 mt-1">사물인터넷(IoT)과 소프트웨어 정의 네트워크(SDN)의 융합 연구.</p>
                         </li>
                     </ul>
                 </section>
@@ -282,22 +353,26 @@
                      Education 섹션 - 학력 사항
                      ========================================== -->
                 <section id="education" class="mb-12">
-                    <h2 class="text-3xl font-bold text-[#2b6cb0] mb-6">Education</h2>
+                    <h2 class="text-3xl font-bold text-[#2b6cb0] mb-6">Education / Experience</h2>
                     <div class="space-y-6">
-                        <!-- ========== 학력 항목 1 ========== -->
-                        <!-- TODO: 아래 학력 항목 1, 2, 3의 내용을 실제 학력 정보로 수정 -->
-                        <!-- 필요한 만큼 복사해서 추가하거나, 불필요한 항목은 삭제 -->
+                        <!-- ========== Experience Item 1 ========== -->
+                        <div class="flex flex-col md:flex-row md:items-start">
+                            <div class="md:w-32 text-gray-500 text-sm font-medium mb-2 md:mb-0">2025.12 - Current</div>
+                            <div class="flex-1">
+                                <h3 class="text-xl font-semibold mb-1">PostDoc Researcher</h3>
+                                <p class="text-gray-600 mb-1">Konkuk Aerospace Design·Airworthiness Institute (KADA)</p>
+                                <p class="text-gray-600 mb-1">Konkuk University</p>
+                            </div>
+                        </div>
+
+                        <!-- ========== Education Item 1 ========== -->
                         <div class="flex flex-col md:flex-row md:items-start">
                             <!-- TODO: 기간 수정 (예: "2020 - 현재", "2018 - 2020") -->
                             <div class="md:w-32 text-gray-500 text-sm font-medium mb-2 md:mb-0">2025</div>
                         <div class="flex-1">
-                                <!-- TODO: 학위명 수정 (예: "PhD in Computer Science", "BS in Mathematics") -->
-                                <h3 class="text-xl font-semibold mb-1">PhD in Computer Science</h3>
-                                <!-- TODO: 학교명 수정 -->
+                                <h3 class="text-xl font-semibold mb-1">Ph.D. in Engineering</h3>
                                 <p class="text-gray-600 mb-1">Konkuk University</p>
-                                <!-- TODO: 지도교수 수정 (박사 과정인 경우) 
-                                <p class="text-sm text-gray-500">Advisor: Prof. Advisor Name</p>-->
-                                <!-- TODO: 논문 제목 수정 (박사 과정인 경우, 필요없으면 삭제) -->
+                                <p class="text-sm text-gray-500">Advisor: Prof. Dugki Min</p>
                                 <p class="text-sm text-gray-500 mt-2">Thesis: "SRN Analysis Modeling and Simulation for Auto Scalable Ceph Controller"</p>
                             </div>
                         </div>
@@ -351,22 +426,22 @@
                         <!-- TODO: 이메일 주소 수정 -->
                         <p class="flex items-center">
                             <i class="fas fa-envelope mr-3 text-[#2b6cb0] w-5"></i>
-                            <a href="mailto:your.email@example.com" class="link-hover">your.email@example.com</a>
+                            <button onclick="copyToClipboard('miaow89@konkuk.ac.kr')" class="link-hover hover:underline text-left">miaow89@konkuk.ac.kr</button>
                         </p>
                         
                         <!-- TODO: 주소 정보 수정 (필요없으면 삭제) -->
                         <p class="flex items-center">
                             <i class="fas fa-map-marker-alt mr-3 text-[#2b6cb0] w-5"></i>
-                            <span>OO University, Department of Computer Science<br>
-                            Building Name, Room XXX<br>
-                            City, Country</span>
+                            <span>Konkuk University, Department of Computer Science<br>
+                            New Engineering Building, Room 1207<br>
+                            Seoul, Korea</span>
                         </p>
                         
-                        <!-- TODO: 전화번호 수정 (필요없으면 삭제) -->
+                        <!-- TODO: 전화번호 수정 (필요없으면 삭제) 
                         <p class="flex items-center">
                             <i class="fas fa-phone mr-3 text-[#2b6cb0] w-5"></i>
                             <span>+82-XX-XXXX-XXXX</span>
-                        </p>
+                        </p>-->
                         
                         <!-- 추가 연락처 정보 (예: ResearchGate, ORCID 등)
                         <p class="flex items-center">
@@ -385,7 +460,7 @@
             <!-- TODO: 이름과 연도 수정 (데스크탑 사이드바 라인 166과 동일하게) -->
             <footer class="md:hidden bg-white border-t border-gray-200 py-6 px-6">
                 <p class="text-xs text-center text-gray-500">
-                    © 2026 Damsub Lim (임담섭). All rights reserved.
+                    © 2026 Damsub Lim. All rights reserved.
                 </p>
             </footer>
         </main>
@@ -413,6 +488,33 @@
                 icon.classList.add('fa-bars');
             }
         });
+        
+        // ==========================================
+        // 언어 전환 기능 (EN/KO)
+        // ==========================================
+        const langToggleBtn = document.getElementById('langToggle');
+        let currentLang = 'en'; // 초기는 영어
+
+        if (langToggleBtn) {
+            langToggleBtn.addEventListener('click', function() {
+                // 언어 상태 변경
+                currentLang = currentLang === 'en' ? 'ko' : 'en';
+                
+                // 버튼 텍스트 변경
+                const langText = this.querySelector('span');
+                if (langText) {
+                    langText.textContent = currentLang === 'en' ? 'KO' : 'EN';
+                }
+                
+                // 콘텐츠 표시/숨김 처리
+                document.querySelectorAll('.lang-en').forEach(el => {
+                    el.style.display = currentLang === 'en' ? 'block' : 'none';
+                });
+                document.querySelectorAll('.lang-ko').forEach(el => {
+                    el.style.display = currentLang === 'ko' ? 'block' : 'none';
+                });
+            });
+        }
         
         // ==========================================
         // 논문 목록 자동 렌더링 기능
@@ -737,8 +839,7 @@
                 document.getElementById('publications-list').innerHTML = `
                     <div class="text-center text-red-500 py-8">
                         <i class="fas fa-exclamation-circle mr-2"></i>
-                        논문 목록을 불러올 수 없습니다. papers/papers.json 파일을 확인해주세요.
-                        <br><small class="text-gray-400 mt-2 block">${error.message}</small>
+                        논문 목록을 불러오지 못했습니다.
                     </div>
                 `;
             }
