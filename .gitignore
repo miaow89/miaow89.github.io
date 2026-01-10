@@ -1,0 +1,37 @@
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+Desktop.ini
+
+# Editor directories and files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.project
+.classpath
+.settings/
+
+# Logs
+*.log
+npm-debug.log*
+
+# Optional: Cache directories
+.cache/
+
+# Optional: Build directories (현재는 빌드가 없지만, 나중을 위해)
+dist/
+build/
+
+# 논문 PDF 파일 (선택사항)
+# 큰 파일이므로 Git LFS를 사용하거나 .gitignore에 추가할 수 있습니다
+# papers/*.pdf
+
+# papers.json은 버전 관리에 포함해야 합니다!
+# papers/papers.json 파일은 .gitignore에 추가하지 마세요
