@@ -2,7 +2,7 @@
   {
     "id": "paper1",
     "title": "S-iNAS: A Performance-Centric SRN Modeling and Analysis of Time and Event Based Scaling Strategies in Ceph-Based Industrial Network-Attached Storage",
-    "titleLink": "https://link.springer.com/article/10.1007/s10922-025-10005-6",
+    "titleLink": "#",
     "authors": [
       {
         "name": "Damsub Lim",
@@ -21,7 +21,7 @@
     "year": 2026,
     "links": {
       "pdf": "papers/S-iNAS A Performance-Centric SRN Modeling and Analysis of Time and Event Based Scaling Strategies in Ceph-Based Industrial Network-Attached Storage.pdf",
-      "arxiv": "https://arxiv.org/abs/xxxx.xxxxx",
+      "doi": "https://link.springer.com/article/10.1007/s10922-025-10005-6",
       "code": "https://github.com/yourusername/project1",
       "demo": null,
       "bibtex": null
@@ -79,5 +79,6 @@
     "abstract": null
   }
 ]
+
 
 
