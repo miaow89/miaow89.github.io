@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+
     <!-- ==========================================
          📝 수정 가이드
          ==========================================
@@ -17,21 +18,21 @@
          8. Contact: 라인 344-357 (연락처 정보)
          9. 저작권: 라인 166, 366 (이름과 연도)
     ========================================== -->
-    
+
     <!-- TODO: 페이지 제목 수정 -->
     <title>Academic Portfolio</title>
-    
+
     <!-- Tailwind CSS CDN - 수정 불필요 -->
     <script src="https://cdn.tailwindcss.com"></script>
-    
+
     <!-- FontAwesome CDN - 수정 불필요 -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
+
     <!-- Google Fonts - Roboto - 수정 불필요 (다른 폰트 원하면 변경 가능) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
-    
+
     <!-- ==========================================
          스타일 정의 (CSS)
          ========================================== -->
@@ -40,21 +41,23 @@
         * {
             font-family: 'Roboto', sans-serif;
         }
-        
+
         /* ========== 포인트 컬러 설정 ========== */
         /* TODO: 포인트 컬러 변경하려면 아래 색상 코드 수정 */
         /* 현재: 다크 블루 (#2b6cb0) */
         /* 예시: #1e40af (다크 블루), #059669 (그린), #dc2626 (레드) 등 */
         :root {
-            --primary-color: #2b6cb0;  /* TODO: 메인 컬러 수정 */
-            --primary-hover: #2c5282;  /* TODO: 호버 시 컬러 수정 */
+            --primary-color: #2b6cb0;
+            /* TODO: 메인 컬러 수정 */
+            --primary-hover: #2c5282;
+            /* TODO: 호버 시 컬러 수정 */
         }
-        
+
         /* 스무스 스크롤 - 수정 불필요 */
         html {
             scroll-behavior: smooth;
         }
-        
+
         /* 사이드바 고정 (데스크탑) - 수정 불필요 */
         @media (min-width: 768px) {
             .sidebar-fixed {
@@ -65,85 +68,95 @@
                 overflow-y: auto;
             }
         }
-        
+
         /* 모바일 메뉴 토글 애니메이션 - 수정 불필요 */
         .mobile-menu {
             transition: max-height 0.3s ease-out;
         }
-        
+
         /* 링크 호버 효과 - 수정 불필요 (컬러는 위의 :root에서 변경) */
         .link-hover {
             transition: color 0.2s ease;
         }
-        
+
         .link-hover:hover {
             color: var(--primary-color);
         }
-        
+
         /* 섹션 구분선 - 수정 불필요 (색상이나 여백 조정 가능) */
         .section-divider {
-            border-top: 1px solid #e5e7eb;  /* TODO: 구분선 색상 변경 가능 */
-            margin: 3rem 0;                  /* TODO: 위아래 여백 조정 가능 */
+            border-top: 1px solid #e5e7eb;
+            /* TODO: 구분선 색상 변경 가능 */
+            margin: 3rem 0;
+            /* TODO: 위아래 여백 조정 가능 */
         }
     </style>
 </head>
+
 <body class="bg-gray-50 text-gray-800">
-    
+
     <!-- 모바일 메뉴 토글 버튼 (모바일에서만 표시) -->
     <div class="md:hidden bg-white shadow-md sticky top-0 z-50">
         <button id="mobileMenuToggle" class="p-4 w-full text-left flex items-center justify-between">
             <span class="font-semibold text-xl">Menu</span>
             <i class="fas fa-bars text-gray-600"></i>
-                </button>
+        </button>
         <div id="mobileMenu" class="hidden mobile-menu bg-white border-t border-gray-200">
             <!-- 모바일 사이드바 내용 -->
             <div class="p-6">
                 <!-- ========== 모바일 프로필 정보 (데스크탑 사이드바와 동일하게 수정) ========== -->
-                
+
                 <!-- TODO: 프로필 사진 경로 변경 (assets/profile.jpg 또는 온라인 이미지 URL) -->
                 <div class="flex justify-center mb-4">
-                    <img src="assets/260105-Profile-Damsub Lim.jpg" alt="Profile" class="w-32 h-32 rounded-full object-cover border-4 border-gray-200">
+                    <img src="assets/260105-Profile-Damsub Lim.jpg" alt="Profile"
+                        class="w-32 h-32 rounded-full object-cover border-4 border-gray-200">
                 </div>
-                
+
                 <!-- Name -->
                 <h1 class="text-2xl font-bold text-center mb-2">
                     <span class="lang-en">Damsub Lim</span>
                     <span class="lang-ko" style="display: none;">임담섭</span>
                 </h1>
-                
+
                 <!-- Position -->
                 <p class="text-center text-gray-600 mb-4">
                     <span class="lang-en">PostDoc Researcher at KADA, Konkuk Univ.</span>
                     <span class="lang-ko" style="display: none;">건국대학교 KADA 박사후연구원</span>
                 </p>
-                
+
                 <!-- Bio -->
                 <p class="text-center text-sm text-gray-600 mb-6">
                     <span class="lang-en">Research interests in Distributed Systems and Performance Reliability</span>
                     <span class="lang-ko" style="display: none;">관심분야: 분산 시스템 및 성능 신뢰성</span>
                 </p>
-                
+
                 <!-- TODO: 소셜 링크 URL 수정 (필요 없는 링크는 전체 <a> 태그 삭제) -->
                 <div class="flex justify-center space-x-4 mb-6">
                     <!-- GitHub - TODO: yourusername을 실제 GitHub 사용자명으로 변경 -->
-                    <a href="https://github.com/yourusername" target="_blank" class="text-gray-600 hover:text-[#2b6cb0] transition-colors" title="GitHub">
+                    <a href="https://github.com/yourusername" target="_blank"
+                        class="text-gray-600 hover:text-[#2b6cb0] transition-colors" title="GitHub">
                         <i class="fab fa-github text-2xl"></i>
                     </a>
                     <!-- LinkedIn - TODO: yourusername을 실제 LinkedIn 사용자명으로 변경 -->
-                    <a href="https://linkedin.com/in/yourusername" target="_blank" class="text-gray-600 hover:text-[#2b6cb0] transition-colors" title="LinkedIn">
+                    <a href="https://linkedin.com/in/yourusername" target="_blank"
+                        class="text-gray-600 hover:text-[#2b6cb0] transition-colors" title="LinkedIn">
                         <i class="fab fa-linkedin text-2xl"></i>
                     </a>
                     <!-- Google Scholar - TODO: YOUR_ID를 실제 Google Scholar ID로 변경 -->
-                    <a href="https://scholar.google.com/citations?user=YOUR_ID" target="_blank" class="text-gray-600 hover:text-[#2b6cb0] transition-colors" title="Google Scholar">
+                    <a href="https://scholar.google.com/citations?user=YOUR_ID" target="_blank"
+                        class="text-gray-600 hover:text-[#2b6cb0] transition-colors" title="Google Scholar">
                         <i class="fas fa-graduation-cap text-2xl"></i>
                     </a>
                     <!-- Email - TODO: 이메일 주소 변경 -->
                     <!-- Email -->
-                    <button onclick="copyToClipboard('miaow89@konkuk.ac.kr')" class="text-gray-600 hover:text-[#2b6cb0] transition-colors focus:outline-none" title="Copy Email">
+                    <button onclick="copyToClipboard('miaow89@konkuk.ac.kr')"
+                        class="text-gray-600 hover:text-[#2b6cb0] transition-colors focus:outline-none"
+                        title="Copy Email">
                         <i class="fas fa-envelope text-2xl"></i>
                     </button>
                     <!-- CV Download - TODO: assets/cv.pdf 경로에 실제 CV 파일 업로드 또는 링크 변경 -->
-                    <a href="assets/cv.pdf" target="_blank" class="text-gray-600 hover:text-[#2b6cb0] transition-colors" title="Download CV">
+                    <a href="assets/cv.pdf" target="_blank" class="text-gray-600 hover:text-[#2b6cb0] transition-colors"
+                        title="Download CV">
                         <i class="fas fa-file-pdf text-2xl"></i>
                     </a>
                     <!-- 추가 소셜 링크가 필요하면 여기에 복사해서 추가 (예: Twitter, Instagram 등) -->
@@ -151,7 +164,7 @@
             </div>
         </div>
     </div>
-    
+
     <div class="flex flex-col md:flex-row">
         <!-- ==========================================
              좌측 사이드바 (데스크탑 전용)
@@ -162,9 +175,10 @@
                 <!-- ========== 프로필 사진 ========== -->
                 <!-- TODO: 프로필 사진 경로 변경 (assets/profile.jpg 또는 온라인 이미지 URL) -->
                 <div class="flex justify-center mb-6">
-                    <img src="https://via.placeholder.com/200" alt="Profile" class="w-48 h-48 rounded-full object-cover border-4 border-gray-200 shadow-md">
+                    <img src="https://via.placeholder.com/200" alt="Profile"
+                        class="w-48 h-48 rounded-full object-cover border-4 border-gray-200 shadow-md">
                 </div>
-                
+
                 <!-- ========== 이름 ========== -->
                 <!-- TODO: 이름 수정 (모바일 사이드바 라인 84와 동일하게) -->
                 <!-- ========== Name ========== -->
@@ -172,25 +186,26 @@
                     <span class="lang-en">Damsub Lim</span>
                     <span class="lang-ko" style="display: none;">임담섭</span>
                 </h1>
-                
+
                 <!-- ========== Position ========== -->
                 <p class="text-center text-gray-600 mb-4">
                     <span class="lang-en">PostDoc Researcher at KADA, Konkuk Univ.</span>
                     <span class="lang-ko" style="display: none;">건국대학교 KADA 박사후연구원</span>
                 </p>
-                
+
                 <!-- ========== Bio ========== -->
                 <p class="text-center text-sm text-gray-600 mb-8 leading-relaxed">
                     <span class="lang-en">Research interests in Distributed Systems and Performance Reliability</span>
                     <span class="lang-ko" style="display: none;">관심분야: 분산 시스템 및 성능 신뢰성</span>
                 </p>
-                
+
                 <!-- ========== 소셜 링크 아이콘 ========== -->
                 <!-- TODO: 각 링크의 URL 수정 (모바일 사이드바 라인 95-114와 동일하게) -->
                 <!-- 필요한 링크만 남기고 나머지는 삭제 가능 -->
                 <div class="flex justify-center space-x-4 mb-8">
                     <!-- GitHub -->
-                    <a href="https://github.com/yourusername" target="_blank" class="text-gray-600 hover:text-[#2b6cb0] transition-colors" title="GitHub">
+                    <a href="https://github.com/yourusername" target="_blank"
+                        class="text-gray-600 hover:text-[#2b6cb0] transition-colors" title="GitHub">
                         <i class="fab fa-github text-2xl"></i>
                     </a>
                     <!-- LinkedIn 
@@ -198,21 +213,25 @@
                         <i class="fab fa-linkedin text-2xl"></i>
                     </a>-->
                     <!-- Google Scholar -->
-                    <a href="https://scholar.google.com/citations?user=C5-jvk8AAAAJ&hl=ko" target="_blank" class="text-gray-600 hover:text-[#2b6cb0] transition-colors" title="Google Scholar">
+                    <a href="https://scholar.google.com/citations?user=C5-jvk8AAAAJ&hl=ko" target="_blank"
+                        class="text-gray-600 hover:text-[#2b6cb0] transition-colors" title="Google Scholar">
                         <i class="fas fa-graduation-cap text-2xl"></i>
                     </a>
                     <!-- Email -->
                     <!-- Email -->
-                    <button onclick="copyToClipboard('miaow89@konkuk.ac.kr')" class="text-gray-600 hover:text-[#2b6cb0] transition-colors focus:outline-none" title="Copy Email">
+                    <button onclick="copyToClipboard('miaow89@konkuk.ac.kr')"
+                        class="text-gray-600 hover:text-[#2b6cb0] transition-colors focus:outline-none"
+                        title="Copy Email">
                         <i class="fas fa-envelope text-2xl"></i>
                     </button>
                     <!-- CV Download -->
-                    <a href="assets/cv.pdf" target="_blank" class="text-gray-600 hover:text-[#2b6cb0] transition-colors" title="Download CV">
+                    <a href="assets/cv.pdf" target="_blank" class="text-gray-600 hover:text-[#2b6cb0] transition-colors"
+                        title="Download CV">
                         <i class="fas fa-file-pdf text-2xl"></i>
                     </a>
                     <!-- 추가 소셜 링크: Twitter, Instagram, ResearchGate 등 필요한 경우 복사해서 추가 -->
                 </div>
-                
+
                 <!-- ========== 저작권 문구 ========== -->
                 <!-- TODO: 이름과 연도 수정 (모바일 Footer 라인 366과 동일하게) -->
                 <div class="mt-auto pt-8 border-t border-gray-200">
@@ -222,82 +241,111 @@
                 </div>
             </div>
         </aside>
-        
+
         <!-- ==========================================
              우측 메인 콘텐츠 영역
              ========================================== -->
         <main class="flex-1 md:ml-80 min-h-screen">
             <div class="max-w-4xl mx-auto px-6 md:px-12 py-8 md:py-12 relative">
-                
+
                 <!-- Language Toggle Button -->
-                <button id="langToggle" class="absolute top-8 right-6 md:right-12 bg-white border border-gray-300 hover:bg-gray-50 text-gray-700 px-3 py-1 rounded-md text-sm font-medium transition-colors shadow-sm flex items-center">
+                <button id="langToggle"
+                    class="absolute top-8 right-6 md:right-12 bg-white border border-gray-300 hover:bg-gray-50 text-gray-700 px-3 py-1 rounded-md text-sm font-medium transition-colors shadow-sm flex items-center">
                     <i class="fas fa-globe mr-2 text-gray-400"></i>
                     <span>KO</span>
                 </button>
-                
+
                 <!-- ==========================================
                      About Me 섹션 - 자기소개
                      ========================================== -->
-                <section id="about" class="mb-12 pt-4"> 
+                <section id="about" class="mb-12 pt-4">
                     <h2 class="text-3xl font-bold text-[#2b6cb0] mb-6">About Me</h2>
-                    
+
                     <!-- English Content -->
                     <div class="lang-en prose max-w-none text-gray-700 leading-relaxed">
                         <p class="mb-4">
-                            I am currently a PostDoc at <a href="https://sites.google.com/view/kadalab/home" target="_blank" class="text-[#2b6cb0] hover:underline">KADA</a> at Konkuk University. I received my Ph.D. in Engineering from the <a href="https://dms.konkuk.ac.kr/" target="_blank" class="text-[#2b6cb0] hover:underline">DMS Laboratory</a> at Konkuk University under the advices of Professor Dugki Min. Post-graduation, I maintain a strong collaborative relationship with the lab to further deepen my research and create synergistic outcomes.
+                            I am currently a PostDoc at <a href="https://sites.google.com/view/kadalab/home"
+                                target="_blank" class="text-[#2b6cb0] hover:underline">KADA</a> at Konkuk University. I
+                            received my Ph.D. in Engineering from the <a href="https://dms.konkuk.ac.kr/"
+                                target="_blank" class="text-[#2b6cb0] hover:underline">DMS Laboratory</a> at Konkuk
+                            University under the advices of Professor Dugki Min. Post-graduation, I maintain a strong
+                            collaborative relationship with the lab to further deepen my research and create synergistic
+                            outcomes.
                         </p>
                         <p class="mb-4">
-                            I also continue to collaborate with Professor <a href="https://scholar.google.com/citations?user=q6gCa4cAAAAJ&hl=en" target="_blank" class="text-[#2b6cb0] hover:underline">Tuan Anh Nguyen</a> of HUIT in Vietnam, a former senior member of the DMS Laboratory, and we are deriving research results on various topics.
+                            I also continue to collaborate with Professor <a
+                                href="https://scholar.google.com/citations?user=q6gCa4cAAAAJ&hl=en" target="_blank"
+                                class="text-[#2b6cb0] hover:underline">Tuan Anh Nguyen</a> of HUIT in Vietnam, a former
+                            senior member of the DMS Laboratory, and we are deriving research results on various topics.
                         </p>
                         <p class="mb-4">
-                            My research interests lie in <strong>analyzing and modeling various systems to ensure reliability and stability</strong>. I am actively engaged in research on Distributed Systems, Cloud Computing, IoT and SDN, as well as the Performance, Availability, and Dependability Evaluation of Computer and Storage Systems.
+                            My research interests lie in <strong>analyzing and modeling various systems to ensure
+                                reliability and stability</strong>. I am actively engaged in research on Distributed
+                            Systems, Cloud Computing, IoT and SDN, as well as the Performance, Availability, and
+                            Dependability Evaluation of Computer and Storage Systems.
                         </p>
                     </div>
 
                     <!-- Korean Content (Hidden by default) -->
                     <div class="lang-ko prose max-w-none text-gray-700 leading-relaxed" style="display: none;">
                         <p class="mb-4">
-                            저는 현재 건국대학교 <a href="https://sites.google.com/view/kadalab/home" target="_blank" class="text-[#2b6cb0] hover:underline">KADA</a>에서 PostDoc으로 재직중입니다. 건국대학교 <a href="https://dms.konkuk.ac.kr/" target="_blank" class="text-[#2b6cb0] hover:underline">DMS 연구실</a>에서 민덕기 교수님의 지도 아래 공학 박사 학위를 취득하였으며, 박사 취득 후에도 계속 연구실과의 유기적인 협업 체계를 지속함으로써 연구의 깊이를 더하고 시너지를 창출하고 있습니다.
+                            저는 현재 건국대학교 <a href="https://sites.google.com/view/kadalab/home" target="_blank"
+                                class="text-[#2b6cb0] hover:underline">KADA</a>에서 PostDoc으로 재직중입니다. 건국대학교 <a
+                                href="https://dms.konkuk.ac.kr/" target="_blank"
+                                class="text-[#2b6cb0] hover:underline">DMS 연구실</a>에서 민덕기 교수님의 지도 아래 공학 박사 학위를 취득하였으며, 박사
+                            취득 후에도 계속 연구실과의 유기적인 협업 체계를 지속함으로써 연구의 깊이를 더하고 시너지를 창출하고 있습니다.
                         </p>
                         <p class="mb-4">
-                            <a href="https://dms.konkuk.ac.kr/" target="_blank" class="text-[#2b6cb0] hover:underline">DMS 연구실</a>의 선배였던, 현재는 베트남의 HUIT의 <a href="https://scholar.google.com/citations?user=q6gCa4cAAAAJ&hl=en" target="_blank" class="text-[#2b6cb0] hover:underline">Tuan Anh Nguyen</a> 교수와 연구 협업을 지속하고 있으며, 다양한 주제에 대한 연구 결과를 도출하고 있습니다.
+                            <a href="https://dms.konkuk.ac.kr/" target="_blank"
+                                class="text-[#2b6cb0] hover:underline">DMS 연구실</a>의 선배였던, 현재는 베트남의 HUIT의 <a
+                                href="https://scholar.google.com/citations?user=q6gCa4cAAAAJ&hl=en" target="_blank"
+                                class="text-[#2b6cb0] hover:underline">Tuan Anh Nguyen</a> 교수와 연구 협업을 지속하고 있으며, 다양한 주제에
+                            대한 연구 결과를 도출하고 있습니다.
                         </p>
                         <p class="mb-4">
-                            제 연구 관심사는 <strong>다양한 시스템을 분석하고 모델링하여 신뢰성과 안정성을 확보</strong>하는 데에 있으며, Distributed System, Cloud Computing, IoT and SDN, Performance, Availability and Dependability Evaluation of Computer and Storages Systems와 같은 최신 기술을 적극적으로 연구하고 있습니다.
+                            제 연구 관심사는 <strong>다양한 시스템을 분석하고 모델링하여 신뢰성과 안정성을 확보</strong>하는 데에 있으며, Distributed System,
+                            Cloud Computing, IoT and SDN, Performance, Availability and Dependability Evaluation of
+                            Computer and Storages Systems와 같은 최신 기술을 적극적으로 연구하고 있습니다.
                         </p>
                     </div>
                 </section>
 
                 <div class="section-divider"></div>
-                
+
                 <!-- ==========================================
                      News 섹션 - 최신 소식
                      날짜순으로 정렬 (최신순)
                      ========================================== -->
                 <section id="research-interests" class="mb-12">
                     <h2 class="text-3xl font-bold text-[#2b6cb0] mb-6">Research Interests</h2>
-                    
+
                     <!-- English Content -->
                     <ul class="lang-en list-disc list-inside space-y-3 text-gray-700 text-lg">
                         <li>
-                            <span class="font-semibold text-gray-900">Performance, Availability, and Dependability Evaluation</span>
-                            <p class="text-base text-gray-600 ml-6 mt-1 mb-2">Modeling and analysis of computer and storage systems using SRN and Petri Nets.</p>
+                            <span class="font-semibold text-gray-900">Performance, Availability, and Dependability
+                                Evaluation</span>
+                            <p class="text-base text-gray-600 ml-6 mt-1 mb-2">Modeling and analysis of computer and
+                                storage systems using SRN and Petri Nets.</p>
                         </li>
                         <li>
                             <span class="font-semibold text-gray-900">Agent AI Framework</span>
-                            <p class="text-base text-gray-600 ml-6 mt-1 mb-2">Development of intelligent multi-agent frameworks for autonomous system management.</p>
+                            <p class="text-base text-gray-600 ml-6 mt-1 mb-2">Development of intelligent multi-agent
+                                frameworks for autonomous system management.</p>
                         </li>
                         <li>
                             <span class="font-semibold text-gray-900">Distributed Systems</span>
-                            <p class="text-base text-gray-600 ml-6 mt-1 mb-2">Research on large-scale distributed architectures and storage systems.</p>
+                            <p class="text-base text-gray-600 ml-6 mt-1 mb-2">Research on large-scale distributed
+                                architectures and storage systems.</p>
                         </li>
                         <li>
                             <span class="font-semibold text-gray-900">Cloud Computing</span>
-                            <p class="text-base text-gray-600 ml-6 mt-1 mb-2">Optimization of cloud infrastructure, auto-scaling, and resource management.</p>
+                            <p class="text-base text-gray-600 ml-6 mt-1 mb-2">Optimization of cloud infrastructure,
+                                auto-scaling, and resource management.</p>
                         </li>
                         <li>
                             <span class="font-semibold text-gray-900">IoT and SDN</span>
-                            <p class="text-base text-gray-600 ml-6 mt-1">Integration of Internet of Things with Software-Defined Networking.</p>
+                            <p class="text-base text-gray-600 ml-6 mt-1">Integration of Internet of Things with
+                                Software-Defined Networking.</p>
                         </li>
                     </ul>
 
@@ -305,7 +353,8 @@
                     <ul class="lang-ko list-disc list-inside space-y-3 text-gray-700 text-lg" style="display: none;">
                         <li>
                             <span class="font-semibold text-gray-900">성능, 가용성 및 신뢰성 평가 (Evaluation)</span>
-                            <p class="text-base text-gray-600 ml-6 mt-1 mb-2">SRN 및 Petri Nets를 활용한 컴퓨터/스토리지 시스템 분석 및 모델링.</p>
+                            <p class="text-base text-gray-600 ml-6 mt-1 mb-2">SRN 및 Petri Nets를 활용한 컴퓨터/스토리지 시스템 분석 및
+                                모델링.</p>
                         </li>
                         <li>
                             <span class="font-semibold text-gray-900">에이전트 AI 프레임워크 (Agent AI Framework)</span>
@@ -325,9 +374,9 @@
                         </li>
                     </ul>
                 </section>
-                
+
                 <div class="section-divider"></div>
-                
+
                 <!-- ==========================================
                      Publications 섹션 - 논문/프로젝트 목록
                      papers/papers.json 파일에서 자동으로 로드됨
@@ -341,8 +390,14 @@
                     <div id="publications-container" class="space-y-12">
                         <!-- International Section -->
                         <div id="publications-international-section">
-                            <h3 class="text-2xl font-semibold text-gray-800 mb-6 border-b pb-2">International Journal/Conference Papers</h3>
-                            <div id="publications-international-list" class="space-y-6">
+                            <button
+                                class="w-full flex justify-between items-center text-2xl font-semibold text-gray-800 mb-6 border-b pb-2 focus:outline-none hover:text-[#2b6cb0] transition-colors"
+                                onclick="toggleSection('publications-international-list', this)">
+                                <span>International Journal/Conference Papers</span>
+                                <i class="fas fa-chevron-up transition-transform duration-200"></i>
+                            </button>
+                            <div id="publications-international-list"
+                                class="space-y-6 transition-all duration-300 origin-top">
                                 <div class="text-center text-gray-500 py-4">
                                     <i class="fas fa-spinner fa-spin mr-2"></i> Loading...
                                 </div>
@@ -351,8 +406,14 @@
 
                         <!-- Domestic Section -->
                         <div id="publications-domestic-section">
-                            <h3 class="text-2xl font-semibold text-gray-800 mb-6 border-b pb-2">Domestic Journal/Conference Papers</h3>
-                            <div id="publications-domestic-list" class="space-y-6">
+                            <button
+                                class="w-full flex justify-between items-center text-2xl font-semibold text-gray-800 mb-6 border-b pb-2 focus:outline-none hover:text-[#2b6cb0] transition-colors"
+                                onclick="toggleSection('publications-domestic-list', this)">
+                                <span>Domestic Journal/Conference Papers</span>
+                                <i class="fas fa-chevron-up transition-transform duration-200"></i>
+                            </button>
+                            <div id="publications-domestic-list"
+                                class="space-y-6 transition-all duration-300 origin-top">
                                 <div class="text-center text-gray-500 py-4">
                                     <i class="fas fa-spinner fa-spin mr-2"></i> Loading...
                                 </div>
@@ -360,9 +421,9 @@
                         </div>
                     </div>
                 </section>
-                
+
                 <div class="section-divider"></div>
-                
+
                 <!-- ==========================================
                      Education 섹션 - 학력 사항
                      ========================================== -->
@@ -383,14 +444,15 @@
                         <div class="flex flex-col md:flex-row md:items-start">
                             <!-- TODO: 기간 수정 (예: "2020 - 현재", "2018 - 2020") -->
                             <div class="md:w-32 text-gray-500 text-sm font-medium mb-2 md:mb-0">2025</div>
-                        <div class="flex-1">
+                            <div class="flex-1">
                                 <h3 class="text-xl font-semibold mb-1">Ph.D. in Engineering</h3>
                                 <p class="text-gray-600 mb-1">Konkuk University</p>
                                 <p class="text-sm text-gray-500">Advisor: Prof. Dugki Min</p>
-                                <p class="text-sm text-gray-500 mt-2">Thesis: "SRN Analysis Modeling and Simulation for Auto Scalable Ceph Controller"</p>
+                                <p class="text-sm text-gray-500 mt-2">Thesis: "SRN Analysis Modeling and Simulation for
+                                    Auto Scalable Ceph Controller"</p>
                             </div>
                         </div>
-                        
+
                         <!-- ========== 학력 항목 2 ========== -->
                         <!-- TODO: 항목 1과 동일하게 수정 -->
                         <div class="flex flex-col md:flex-row md:items-start">
@@ -398,12 +460,13 @@
                             <div class="flex-1">
                                 <h3 class="text-xl font-semibold mb-1">MS in Computer Science</h3>
                                 <p class="text-gray-600 mb-1">Konkuk University</p>
-                                <p class="text-sm text-gray-500 mt-2">Thesis: "Profile-Extensible ROHC Engine for improving Network Transmission Efficiency"</p>
+                                <p class="text-sm text-gray-500 mt-2">Thesis: "Profile-Extensible ROHC Engine for
+                                    improving Network Transmission Efficiency"</p>
                                 <!-- TODO: GPA 수정 (필요없으면 삭제) 
                                 <p class="text-sm text-gray-500">GPA: 4.0/4.0</p>-->
-                    </div>
-                </div>
-                
+                            </div>
+                        </div>
+
                         <!-- ========== 학력 항목 3 ========== -->
                         <!-- TODO: 항목 1과 동일하게 수정 
                         <div class="flex flex-col md:flex-row md:items-start">
@@ -415,7 +478,7 @@
                                 <p class="text-sm text-gray-500">Summa Cum Laude</p>
                             </div>
                         </div>-->
-                        
+
                         <!-- 새 학력 항목 추가: 아래 형식 복사해서 위에 추가
                         <div class="flex flex-col md:flex-row md:items-start">
                             <div class="md:w-32 text-gray-500 text-sm font-medium mb-2 md:mb-0">YYYY - YYYY</div>
@@ -428,9 +491,9 @@
                         -->
                     </div>
                 </section>
-                
+
                 <div class="section-divider"></div>
-                
+
                 <!-- ==========================================
                      Contact 섹션 - 연락처 정보
                      ========================================== -->
@@ -440,34 +503,35 @@
                         <!-- TODO: 이메일 주소 수정 -->
                         <p class="flex items-center">
                             <i class="fas fa-envelope mr-3 text-[#2b6cb0] w-5"></i>
-                            <button onclick="copyToClipboard('miaow89@konkuk.ac.kr')" class="link-hover hover:underline text-left">miaow89@konkuk.ac.kr</button>
+                            <button onclick="copyToClipboard('miaow89@konkuk.ac.kr')"
+                                class="link-hover hover:underline text-left">miaow89@konkuk.ac.kr</button>
                         </p>
-                        
+
                         <!-- TODO: 주소 정보 수정 (필요없으면 삭제) -->
                         <p class="flex items-center">
                             <i class="fas fa-map-marker-alt mr-3 text-[#2b6cb0] w-5"></i>
                             <span>Konkuk University, Department of Computer Science<br>
-                            New Engineering Building, Room 1207<br>
-                            Seoul, Korea</span>
+                                New Engineering Building, Room 1207<br>
+                                Seoul, Korea</span>
                         </p>
-                        
+
                         <!-- TODO: 전화번호 수정 (필요없으면 삭제) 
                         <p class="flex items-center">
                             <i class="fas fa-phone mr-3 text-[#2b6cb0] w-5"></i>
                             <span>+82-XX-XXXX-XXXX</span>
                         </p>-->
-                        
+
                         <!-- 추가 연락처 정보 (예: ResearchGate, ORCID 등)
                         <p class="flex items-center">
                             <i class="fas fa-link mr-3 text-[#2b6cb0] w-5"></i>
                             <a href="https://..." target="_blank" class="link-hover">ResearchGate Profile</a>
                         </p>
                         -->
-        </div>
-    </section>
-                
+                    </div>
+                </section>
+
             </div>
-            
+
             <!-- ==========================================
                  모바일 Footer (저작권 문구)
                  ========================================== -->
@@ -478,7 +542,7 @@
                 </p>
             </footer>
         </main>
-        </div>
+    </div>
 
     <!-- ==========================================
          JavaScript (모바일 메뉴 토글 기능)
@@ -489,11 +553,11 @@
         // ========== 모바일 메뉴 토글 기능 ==========
         // 모바일에서 메뉴 버튼을 클릭하면 사이드바가 나타나거나 사라지는 기능
         // 수정 불필요 (기능만 추가하려면 아래에 코드 작성)
-        
-        document.getElementById('mobileMenuToggle').addEventListener('click', function() {
+
+        document.getElementById('mobileMenuToggle').addEventListener('click', function () {
             const menu = document.getElementById('mobileMenu');
             const icon = this.querySelector('i');
-            
+
             if (menu.classList.contains('hidden')) {
                 menu.classList.remove('hidden');
                 icon.classList.remove('fa-bars');
@@ -504,40 +568,62 @@
                 icon.classList.add('fa-bars');
             }
         });
-        
+
+        // ==========================================
+        // 언어 전환 기능 (EN/KO)
+        // ==========================================
         // ==========================================
         // 언어 전환 기능 (EN/KO)
         // ==========================================
         const langToggleBtn = document.getElementById('langToggle');
-        let currentLang = 'en'; // 초기는 영어
 
-        if (langToggleBtn) {
-            langToggleBtn.addEventListener('click', function() {
-                // 언어 상태 변경
-                currentLang = currentLang === 'en' ? 'ko' : 'en';
-                
-                // 버튼 텍스트 변경
-                const langText = this.querySelector('span');
-                if (langText) {
-                    langText.textContent = currentLang === 'en' ? 'KO' : 'EN';
-                }
-                
-                // 콘텐츠 표시/숨김 처리
-                document.querySelectorAll('.lang-en').forEach(el => {
-                    el.style.display = currentLang === 'en' ? 'block' : 'none';
-                });
-                document.querySelectorAll('.lang-ko').forEach(el => {
-                    el.style.display = currentLang === 'ko' ? 'block' : 'none';
-                });
+        // 사용자 언어 감지 (기본값 설정)
+        const userLang = navigator.language || navigator.userLanguage;
+        let currentLang = userLang.toLowerCase().includes('ko') ? 'ko' : 'en';
+
+        // 초기 언어 설정 함수
+        function setLanguage(lang) {
+            currentLang = lang;
+
+            // 버튼 텍스트 변경
+            const langText = langToggleBtn ? langToggleBtn.querySelector('span') : null;
+            if (langText) {
+                // 현재 상태가 보여야 하므로, 버튼에는 '반대' 언어 옵션을 보여줄 수도 있고 '현재'를 보여줄 수도 있음.
+                // 기존 로직: 버튼 텍스트가 현재 언어와 반대되는 언어로 전환하기 위한 라벨링?
+                // 아니면 현재 상태 표시? 
+                // 기존: currentLang === 'en' ? 'KO' : 'EN' -> 이건 'Switch to KO' 의미였음.
+                langText.textContent = currentLang === 'en' ? 'KO' : 'EN';
+            }
+
+            // 콘텐츠 표시/숨김 처리
+            document.querySelectorAll('.lang-en').forEach(el => {
+                el.style.display = currentLang === 'en' ? 'block' : 'none';
+            });
+            document.querySelectorAll('.lang-ko').forEach(el => {
+                el.style.display = currentLang === 'ko' ? 'block' : 'none';
             });
         }
-        
+
+        // 초기 실행
+        document.addEventListener('DOMContentLoaded', () => {
+            setLanguage(currentLang);
+            loadPublications();
+        });
+
+        if (langToggleBtn) {
+            langToggleBtn.addEventListener('click', function () {
+                // 언어 상태 변경 (토글)
+                const newLang = currentLang === 'en' ? 'ko' : 'en';
+                setLanguage(newLang);
+            });
+        }
+
         // ==========================================
         // 논문 목록 자동 렌더링 기능
         // papers/papers.json 파일을 읽어서 Publications 섹션에 자동으로 표시
         // BibTeX 파싱 기능 포함
         // ==========================================
-        
+
         /**
          * BibTeX 문자열을 파싱하여 논문 정보 객체로 변환
          * @param {string} bibtex - BibTeX 문자열
@@ -548,22 +634,22 @@
             if (!bibtex || typeof bibtex !== 'string') {
                 return null;
             }
-            
+
             // BibTeX 항목 타입 추출 (예: @inproceedings, @article 등)
             const entryTypeMatch = bibtex.match(/@(\w+)\s*\{[^,]+/);
             const entryType = entryTypeMatch ? entryTypeMatch[1] : 'misc';
-            
+
             // 필드 추출 함수 (중첩 중괄호 처리)
             const extractField = (fieldName) => {
                 // 다양한 BibTeX 필드 패턴 매칭 (중괄호, 따옴표 등 처리)
                 const fieldPattern = new RegExp(`${fieldName}\\s*=\\s*`, 'i');
                 const fieldMatch = bibtex.match(fieldPattern);
-                
+
                 if (!fieldMatch) return null;
-                
+
                 let startPos = fieldMatch.index + fieldMatch[0].length;
                 let value = '';
-                
+
                 // 중괄호로 시작하는 경우 (중첩 중괄호 처리)
                 if (bibtex[startPos] === '{') {
                     let depth = 0;
@@ -590,30 +676,30 @@
                 else {
                     const commaPos = bibtex.indexOf(',', startPos);
                     const bracePos = bibtex.indexOf('}', startPos);
-                    const endPos = commaPos > 0 && bracePos > 0 
-                        ? Math.min(commaPos, bracePos) 
+                    const endPos = commaPos > 0 && bracePos > 0
+                        ? Math.min(commaPos, bracePos)
                         : (commaPos > 0 ? commaPos : bracePos);
-                    
+
                     if (endPos > startPos) {
                         value = bibtex.substring(startPos, endPos).trim();
                         return value.replace(/[{}]/g, '');
                     }
                 }
-                
+
                 return null;
             };
-            
+
             // 제목 추출
             const title = extractField('title') || extractField('booktitle') || '';
-            
+
             // 저자 추출 및 파싱
             const authorsStr = extractField('author') || '';
             const authors = parseAuthors(authorsStr, yourName);
-            
+
             // 연도 추출
             const yearStr = extractField('year') || '';
             const year = parseInt(yearStr) || null;
-            
+
             // 학회/저널명 추출 (entryType에 따라 다름)
             let venue = '';
             if (entryType === 'inproceedings' || entryType === 'conference') {
@@ -625,11 +711,11 @@
             } else {
                 venue = extractField('booktitle') || extractField('journal') || extractField('venue') || '';
             }
-            
+
             // 링크 추출
             let url = extractField('url') || null;
             const pdf = extractField('pdf') || extractField('file') || null;
-            
+
             // arXiv 링크 추출 (arxiv 필드 또는 url에서 추출)
             let arxiv = extractField('arxiv') || null;
             if (!arxiv && url) {
@@ -645,17 +731,17 @@
                     }
                 }
             }
-            
+
             const code = extractField('code') || extractField('github') || null;
             const demo = extractField('demo') || null;
-            
+
             // DOI 추출
             let doi = extractField('doi') || null;
             if (doi && !doi.startsWith('http')) {
                 // DOI가 URL 형식이 아니면 https://doi.org/ 추가
                 doi = doi.replace(/^doi:/i, '').trim();
             }
-            
+
             return {
                 title: title,
                 authors: authors,
@@ -674,7 +760,7 @@
                 abstract: extractField('abstract') || null
             };
         }
-        
+
         /**
          * 두 이름이 같은 사람인지 확인 (정확한 매칭)
          * @param {string} name1 - 첫 번째 이름
@@ -683,7 +769,7 @@
          */
         function isSamePerson(name1, name2) {
             if (!name1 || !name2) return false;
-            
+
             // 정규화: 소문자 변환, 공백 정리
             const normalize = (name) => {
                 return name.toLowerCase()
@@ -691,30 +777,30 @@
                     .replace(/\s+/g, ' ')
                     .trim();
             };
-            
+
             const normalized1 = normalize(name1);
             const normalized2 = normalize(name2);
-            
+
             // 정확히 일치하는 경우
             if (normalized1 === normalized2) {
                 return true;
             }
-            
+
             // 이름을 단어 배열로 분리
             const words1 = normalized1.split(/\s+/).filter(w => w.length > 0);
             const words2 = normalized2.split(/\s+/).filter(w => w.length > 0);
-            
+
             // 단어가 하나만 있으면 정확히 일치해야 함
             if (words1.length === 1 || words2.length === 1) {
                 return normalized1 === normalized2;
             }
-            
+
             // 모든 단어가 일치하는지 확인 (순서 무관)
             // 두 이름의 단어 세트가 완전히 일치해야 함
             if (words1.length === words2.length) {
                 const set1 = new Set(words1);
                 const set2 = new Set(words2);
-                
+
                 // 두 세트가 완전히 일치하는지 확인
                 if (set1.size === set2.size) {
                     for (const word of set1) {
@@ -725,24 +811,24 @@
                     return true;
                 }
             }
-            
+
             // 성(last name, 첫 번째 또는 마지막 단어)이 일치하고 
             // 이름(first name, 나머지 단어들)도 모두 일치하는지 확인
             // BibTeX 형식: "Last, First" 또는 "First Last" 모두 고려
             const lastName1 = words1[words1.length - 1]; // 마지막이 성
             const lastName2 = words2[words2.length - 1];
-            
+
             // 성이 정확히 일치하는 경우
             if (lastName1 === lastName2) {
                 // 나머지 이름들(first name)도 비교
                 const firstNames1 = words1.slice(0, -1).sort().join(' ');
                 const firstNames2 = words2.slice(0, -1).sort().join(' ');
-                
+
                 // first name이 없거나, 정확히 일치하는 경우
                 if (firstNames1 === '' || firstNames2 === '' || firstNames1 === firstNames2) {
                     return true;
                 }
-                
+
                 // first name의 모든 단어가 일치하는지 확인
                 const firstWords1 = firstNames1.split(' ').sort();
                 const firstWords2 = firstNames2.split(' ').sort();
@@ -750,10 +836,10 @@
                     return firstWords1.every((word, idx) => word === firstWords2[idx]);
                 }
             }
-            
+
             return false;
         }
-        
+
         /**
          * BibTeX 저자 문자열을 파싱하여 저자 배열로 변환
          * @param {string} authorsStr - BibTeX 저자 문자열 (예: "Author1, First and Author2, Second")
@@ -762,12 +848,12 @@
          */
         function parseAuthors(authorsStr, yourName = null) {
             if (!authorsStr) return [];
-            
+
             // " and " 또는 " AND " 로 분리
             const authors = authorsStr.split(/\s+and\s+/i).map(author => {
                 let originalAuthor = author.trim();
                 author = originalAuthor.trim();
-                
+
                 // 이름 형식 변환 (Last, First -> First Last)
                 if (author.includes(',')) {
                     const parts = author.split(',').map(p => p.trim());
@@ -777,23 +863,23 @@
                 }
                 // 중괄호 제거
                 author = author.replace(/[{}]/g, '').trim();
-                
+
                 // 본인 이름인지 확인 (정확한 매칭)
                 let isBold = false;
                 if (yourName) {
                     // 정확한 이름 매칭 함수 사용
                     isBold = isSamePerson(author, yourName);
                 }
-                
+
                 return {
                     name: author,
                     bold: isBold
                 };
             });
-            
+
             return authors;
         }
-        
+
         /**
          * 논문 정보를 정규화 (BibTeX 파싱 또는 기존 형식 통합)
          * @param {Object} paper - 논문 정보 객체 (bibtex 필드가 있으면 파싱)
@@ -826,11 +912,11 @@
                     };
                 }
             }
-            
+
             // BibTeX가 없으면 기존 형식 그대로 반환
             return paper;
         }
-        
+
         /**
          * 논문 목록을 JSON 파일에서 로드하여 화면에 렌더링
          */
@@ -844,26 +930,31 @@
                 if (typeof papersData === 'undefined') {
                     throw new Error('papers/data.js 파일을 찾을 수 없거나 로드되지 않았습니다.');
                 }
-                
+
                 // 본인 이름 추출 (설정 파일에서 가져오기, 없으면 기본값)
                 const yourName = papersData.yourName || null;
                 const papers = papersData.papers || papersData; // papers 필드가 있으면 사용, 없으면 배열 자체
-                
+
                 // BibTeX 파싱 및 정규화
                 const normalizedPapers = papers.map(paper => normalizePaper(paper, yourName));
-                
+
                 renderPublications(normalizedPapers);
             } catch (error) {
                 console.error('논문 목록을 불러오는 중 오류가 발생했습니다:', error);
-                document.getElementById('publications-list').innerHTML = `
-                    <div class="text-center text-red-500 py-8">
-                        <i class="fas fa-exclamation-circle mr-2"></i>
-                        논문 목록을 불러오지 못했습니다.
-                    </div>
-                `;
+
+                const container = document.getElementById('publications-container');
+                if (container) {
+                    container.innerHTML = `
+                        <div class="text-center text-red-500 py-8">
+                            <i class="fas fa-exclamation-circle mr-2"></i>
+                            Failed to load publications. Please check papers/data.js <br>
+                            <small class="text-gray-400 text-xs">${error.message}</small>
+                        </div>
+                    `;
+                }
             }
         }
-        
+
         /**
          * 논문 목록을 HTML로 렌더링
          * @param {Array} papers - 논문 정보 배열
@@ -875,7 +966,7 @@
         function renderPublications(papers) {
             const internationalContainer = document.getElementById('publications-international-list');
             const domesticContainer = document.getElementById('publications-domestic-list');
-            
+
             if (!papers || papers.length === 0) {
                 const emptyMsg = `
                     <div class="text-center text-gray-500 py-8">
@@ -886,7 +977,7 @@
                 domesticContainer.innerHTML = emptyMsg;
                 return;
             }
-            
+
             // 연도순으로 정렬 (최신순)
             const sortedPapers = [...papers].sort((a, b) => (b.year || 0) - (a.year || 0));
 
@@ -896,29 +987,46 @@
 
             // 렌더링 함수
             const generateListHtml = (paperList) => {
-                 if (paperList.length === 0) {
+                if (paperList.length === 0) {
                     return `<div class="text-gray-500 italic">No publications in this category.</div>`;
-                 }
-                 return paperList.map(paper => {
-                    // SCI 여부에 따른 제목 처리
-                    const titlePrefix = paper.isSCI ? '<span class="text-red-600 font-bold mr-2">[SCI]</span>' : '';
-                    
+                }
+                return paperList.map(paper => {
+                    // Title Prefix (SCI/KSCI)
+                    let titlePrefix = '';
+                    if (paper.isSCI) {
+                        const qRank = paper.quartile ? `, ${paper.quartile}` : '';
+                        titlePrefix = `<span class="text-red-600 font-bold mr-2">[SCI${qRank}]</span>`;
+                    } else if (paper.isKSCI) {
+                        titlePrefix = `<span class="text-blue-600 font-bold mr-2">[KSCI]</span>`;
+                    }
+
                     // 저자 목록 생성
-                    const authorsHtml = paper.authors
-                        .map(author => author.bold ? `<strong>${author.name}</strong>` : author.name)
-                        .join(', ');
-                    
+                    // 저자 목록 생성
+                    const formatName = (name) => `<u><strong>${name}</strong></u>`;
+                    let authorsHtml = '';
+
+                    if (Array.isArray(paper.authors)) {
+                        authorsHtml = paper.authors
+                            .map(author => author.bold ? formatName(author.name) : author.name)
+                            .join(', ');
+                    } else if (typeof paper.authors === 'string') {
+                        authorsHtml = paper.authors
+                            .replace(/Damsub Lim/g, formatName('Damsub Lim'))
+                            .replace(/D Lim/g, formatName('D Lim'))
+                            .replace(/임담섭/g, formatName('임담섭'));
+                    }
+
                     // 제목 링크 처리
                     const titleHtml = paper.titleLink && paper.titleLink !== '#'
                         ? `<a href="${paper.titleLink}" class="link-hover text-gray-800 hover:text-[#2b6cb0]" target="_blank">${titlePrefix}${paper.title}</a>`
                         : `<span class="text-gray-800">${titlePrefix}${paper.title}</span>`; // Google Scholar Link usually in links.url
-                    
+
                     // If simply just title string, assume links.url is the main link
-                    const finalTitleHtml = paper.links?.url 
+                    const finalTitleHtml = paper.links?.url
                         ? `<a href="${paper.links.url}" class="link-hover text-gray-800 hover:text-[#2b6cb0]" target="_blank">${titlePrefix}${paper.title}</a>`
                         : titleHtml;
 
-                    
+
                     // 링크 버튼 생성
                     const linksHtml = [];
                     if (paper.links.pdf) {
@@ -959,11 +1067,11 @@
                         `);
                     }
                     if (paper.links.url && !paper.links.arxiv && !paper.links.doi && !paper.titleLink) {
-                         // Only add generic link if not already covered
-                         /* Usually title is the link, so we might skip this button to avoid clutter, 
-                            but keeping it for completeness if requested. 
-                            Let's keep it but ensure it doesn't duplicate functionality if title is clickable.
-                            Actually, title linking is best. */
+                        // Only add generic link if not already covered
+                        /* Usually title is the link, so we might skip this button to avoid clutter, 
+                           but keeping it for completeness if requested. 
+                           Let's keep it but ensure it doesn't duplicate functionality if title is clickable.
+                           Actually, title linking is best. */
                     }
                     if (paper.links.bibtex) {
                         linksHtml.push(`
@@ -972,7 +1080,7 @@
                             </a>
                         `);
                     }
-                    
+
                     return `
                         <div class="border-l-4 border-[#2b6cb0] pl-4 py-2 transition hover:bg-gray-50">
                             <h3 class="text-xl font-semibold mb-2 leading-tight">
@@ -997,17 +1105,45 @@
             internationalContainer.innerHTML = generateListHtml(internationalPapers);
             domesticContainer.innerHTML = generateListHtml(domesticPapers);
         }
-        
+
         // 페이지 로드 시 논문 목록 자동 로드
         loadPublications();
-        
-        // ========== 추가 JavaScript 기능 ==========
-        // 필요시 여기에 추가 기능을 작성하세요
-        // 예: 스무스 스크롤, 애니메이션, 다크 모드 등
-        
-        // 모바일 사이드바와 데스크탑 사이드바 내용 동기화 (선택사항)
-        // 필요시 같은 데이터를 두 곳에 표시하도록 구현 가능
+
+        // ==========================================
+        // 추가 JavaScript 기능
+        // ==========================================
+
+        /**
+         * Publication 섹션 토글 기능
+         * @param {string} listId - 토글할 리스트 컨테이너 ID
+         * @param {HTMLElement} btn - 클릭된 버튼 요소
+         */
+        function toggleSection(listId, btn) {
+            const list = document.getElementById(listId);
+            const icon = btn.querySelector('i');
+
+            if (list.style.maxHeight === '0px' || list.classList.contains('hidden')) {
+                // 열기
+                list.classList.remove('hidden');
+                list.style.maxHeight = list.scrollHeight + "px";
+                icon.style.transform = "rotate(0deg)";
+            } else {
+                // 닫기
+                // 높이를 명시적으로 설정해야 transition이 작동함
+                list.style.maxHeight = list.scrollHeight + "px";
+                setTimeout(() => {
+                    list.style.maxHeight = '0px';
+                }, 10);
+                list.style.overflow = 'hidden';
+                icon.style.transform = "rotate(180deg)";
+            }
+        }
+
+        // Publications rendered 후 높이 재조정 등 필요할 수 있음
+        // 하지만 max-height: none 상태라면 상관없음. 초기엔 열려있어야 함.
+
     </script>
-    
+
 </body>
+
 </html>
