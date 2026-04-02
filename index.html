@@ -564,6 +564,30 @@
                 .replace(/'/g, "&#039;");
         }
 
+        // 이메일/연락처 복사 버튼에서 공통으로 사용하는 유틸리티입니다.
+        async function copyToClipboard(text) {
+            try {
+                if (navigator.clipboard && window.isSecureContext) {
+                    await navigator.clipboard.writeText(text);
+                } else {
+                    const tempInput = document.createElement('textarea');
+                    tempInput.value = text;
+                    tempInput.setAttribute('readonly', '');
+                    tempInput.style.position = 'absolute';
+                    tempInput.style.left = '-9999px';
+                    document.body.appendChild(tempInput);
+                    tempInput.select();
+                    document.execCommand('copy');
+                    document.body.removeChild(tempInput);
+                }
+
+                alert(`Copied: ${text}`);
+            } catch (error) {
+                console.error('Failed to copy text:', error);
+                alert('Failed to copy. Please copy manually.');
+            }
+        }
+
         // ========== 모바일 메뉴 토글 기능 ==========
         // 모바일에서 메뉴 버튼을 클릭하면 사이드바가 나타나거나 사라지는 기능
 

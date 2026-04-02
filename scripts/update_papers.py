@@ -60,7 +60,11 @@ def load_existing_data():
     with open(DATA_FILE, "r", encoding="utf-8") as f:
         content = f.read()
         # JS 파일에서 JSON 부분만 추출
-        json_str = re.search(r"const papersData = ({.*});", content, re.DOTALL).group(1)
+        match = re.search(r"(?:window\.)?papersData\s*=\s*({.*});", content, re.DOTALL)
+        if not match:
+            print("Failed to find papersData object. Returning empty template.")
+            return {"yourName": "Damsub Lim", "papers": []}
+        json_str = match.group(1)
         # Trailing commas 제거 (JSON 호환성 위함)
         json_str = re.sub(r",\s*([\]}])", r"\1", json_str)
         try:
@@ -125,9 +129,9 @@ def merge_papers(existing_data, new_papers):
     return existing_data, adds_count
 
 def save_js_data(data):
-    # Python Dictionary를 예쁜 JS 포맷 문자열로 변환
+    # index.html이 그대로 읽을 수 있도록 window.papersData 형식으로 저장
     json_str = json.dumps(data, indent=2, ensure_ascii=False)
-    js_content = f"// This file is automatically loaded by index.html to avoid CORS issues with local file fetching\nconst papersData = {json_str};\n"
+    js_content = f"// This file is automatically loaded by index.html to avoid CORS issues with local file fetching\nwindow.papersData = {json_str};\n"
     
     with open(DATA_FILE, "w", encoding="utf-8") as f:
         f.write(js_content)
