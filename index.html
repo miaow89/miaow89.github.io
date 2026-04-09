@@ -613,8 +613,8 @@
         const langToggleBtn = document.getElementById('langToggle');
 
         // 사용자 언어 감지 (기본값 설정)
-        const userLang = navigator.language || navigator.userLanguage;
-        let currentLang = userLang.toLowerCase().includes('ko') ? 'ko' : 'en';
+        const userLang = navigator.language || navigator.userLanguage || 'en';
+        let currentLang = userLang.toLowerCase().startsWith('ko') ? 'ko' : 'en';
 
         // 초기 언어 설정 함수
         function setLanguage(lang) {
