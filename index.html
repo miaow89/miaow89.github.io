@@ -90,6 +90,13 @@
             margin: 3rem 0;
             /* TODO: 위아래 여백 조정 가능 */
         }
+        .visitor-badge {
+            width: 100%;
+            background: rgba(255, 255, 255, 0.92);
+            border: 1px solid rgba(43, 108, 176, 0.18);
+            border-radius: 0.9rem;
+            box-shadow: 0 8px 18px rgba(15, 23, 42, 0.08);
+        }
     </style>
 </head>
 
@@ -239,6 +246,16 @@
                     <p class="text-xs text-center text-gray-500">
                         © 2026 Damsub Lim. All rights reserved.
                     </p>
+                    <div class="visitor-badge mt-3 p-3 text-center">
+                        <div class="flex items-center justify-center gap-2 text-[#2b6cb0] mb-1">
+                            <i class="fas fa-chart-line text-sm"></i>
+                            <span class="text-[11px] font-semibold uppercase tracking-[0.2em]">Visits</span>
+                        </div>
+                        <p id="visitor-count-desktop" class="text-xl font-bold text-gray-800 leading-none">Loading...</p>
+                        <p id="visitor-status-desktop" class="text-[11px] text-gray-500 mt-1 leading-snug">
+                            Counts at most once every 30 minutes.
+                        </p>
+                    </div>
                 </div>
             </div>
         </aside>
@@ -539,6 +556,16 @@
                 <p class="text-xs text-center text-gray-500">
                     © 2026 Damsub Lim. All rights reserved.
                 </p>
+                <div class="visitor-badge mt-3 p-3 text-center">
+                    <div class="flex items-center justify-center gap-2 text-[#2b6cb0] mb-1">
+                        <i class="fas fa-chart-line text-sm"></i>
+                        <span class="text-[11px] font-semibold uppercase tracking-[0.2em]">Visits</span>
+                    </div>
+                    <p id="visitor-count-mobile" class="text-xl font-bold text-gray-800 leading-none">Loading...</p>
+                    <p id="visitor-status-mobile" class="text-[11px] text-gray-500 mt-1 leading-snug">
+                        Counts at most once every 30 minutes.
+                    </p>
+                </div>
             </footer>
         </main>
     </div>
@@ -588,6 +615,81 @@
 
         // ========== 모바일 메뉴 토글 기능 ==========
         // 모바일에서 메뉴 버튼을 클릭하면 사이드바가 나타나거나 사라지는 기능
+
+        async function updateVisitorCounter() {
+            const countTargets = [
+                document.getElementById('visitor-count-desktop'),
+                document.getElementById('visitor-count-mobile')
+            ].filter(Boolean);
+            const statusTargets = [
+                document.getElementById('visitor-status-desktop'),
+                document.getElementById('visitor-status-mobile')
+            ].filter(Boolean);
+
+            if (countTargets.length === 0) {
+                return;
+            }
+
+            if (location.protocol === 'file:') {
+                countTargets.forEach(el => {
+                    el.textContent = 'Preview';
+                });
+                statusTargets.forEach(el => {
+                    el.textContent = 'Local file previews may not reach the counter API. Check the deployed site.';
+                });
+                return;
+            }
+
+            const namespace = 'miaow89-academic-portfolio';
+            const pathKey = location.pathname === '/'
+                ? 'home'
+                : location.pathname.replace(/[^a-zA-Z0-9]/g, '-');
+            const throttleWindowMs = 30 * 60 * 1000;
+            const timestampKey = `visitor-counted-at:${namespace}:${pathKey}`;
+            const lastCountedAt = Number(localStorage.getItem(timestampKey) || '0');
+            const now = Date.now();
+            const shouldCountVisit = !Number.isFinite(lastCountedAt) || (now - lastCountedAt) >= throttleWindowMs;
+            const endpoint = shouldCountVisit
+                ? `https://api.countapi.xyz/hit/${namespace}/${pathKey}`
+                : `https://api.countapi.xyz/get/${namespace}/${pathKey}`;
+
+            try {
+                const response = await fetch(endpoint, { cache: 'no-store' });
+
+                if (!response.ok) {
+                    throw new Error(`Counter request failed with status ${response.status}`);
+                }
+
+                const data = await response.json();
+                const value = typeof data.value === 'number' ? data.value : null;
+
+                if (value === null) {
+                    throw new Error('Counter response did not include a numeric value.');
+                }
+
+                if (shouldCountVisit) {
+                    localStorage.setItem(timestampKey, String(now));
+                }
+
+                const formattedValue = new Intl.NumberFormat('en-US').format(value);
+                countTargets.forEach(el => {
+                    el.textContent = formattedValue;
+                });
+                statusTargets.forEach(el => {
+                    el.textContent = shouldCountVisit
+                        ? 'This visit was counted. Next count is available in 30 minutes.'
+                        : 'Already counted within the last 30 minutes.';
+                });
+            } catch (error) {
+                console.error('Failed to update visitor counter:', error);
+                countTargets.forEach(el => {
+                    el.textContent = 'Unavailable';
+                });
+                statusTargets.forEach(el => {
+                    el.textContent = 'Visitor counter could not be loaded right now.';
+                });
+            }
+        }
 
         document.getElementById('mobileMenuToggle').addEventListener('click', function () {
             const menu = document.getElementById('mobileMenu');
@@ -1173,6 +1275,8 @@
 
         // Publications rendered 후 높이 재조정 등 필요할 수 있음
         // 하지만 max-height: none 상태라면 상관없음. 초기엔 열려있어야 함.
+
+        updateVisitorCounter();
 
     </script>
 
